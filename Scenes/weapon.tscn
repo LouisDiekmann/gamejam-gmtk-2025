@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2g6sr53j558a"]
+
+[ext_resource type="Script" uid="uid://c5dvto3ottg6b" path="res://Scripts/Weapons/Item.cs" id="1_e1ly8"]
+[ext_resource type="Resource" uid="uid://dkh8rxmsr5jw6" path="res://Scripts/Weapons/BaseballBat.tres" id="2_qv81b"]
+
+[node name="Stapler" type="Node2D"]
+script = ExtResource("1_e1ly8")
+weaponResource = ExtResource("2_qv81b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1

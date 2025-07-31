@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://qcdq8b3xuf2"]
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://qcdq8b3xuf2"]
 
-[ext_resource type="Script" uid="uid://bh8u0qcu4lqsj" path="res://Scripts/Weapons/Weapon.cs" id="1_ydlmg"]
+[ext_resource type="Script" uid="uid://bh8u0qcu4lqsj" path="res://Scripts/Weapons/WeaponResource.cs" id="1_bay1s"]
+[ext_resource type="Texture2D" uid="uid://cwxyl3au768l4" path="res://Assets/Icons/unconvetional_icons/icons/hammer.png" id="2_bay1s"]
 
 [resource]
-script = ExtResource("1_ydlmg")
+script = ExtResource("1_bay1s")
 ammo = 10
-name = "Stapler"
+name = "stapler"
+texture = ExtResource("2_bay1s")
 metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
