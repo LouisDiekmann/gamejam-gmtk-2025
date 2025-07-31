@@ -5,16 +5,15 @@ public partial class Player : CharacterBody2D {
     [Export] private int speed = 100;
     [Export] private float acceleration = 0.1f;
     [Export] private float legLerpFactor = 0.2f;
+    [Export] public Shooting shooting;
 
     private Node2D body;
     private Node2D legs;
 
-    [Export] private Weapon weapon;
-
-    public override void _Ready()
-    {
+    public override void _Ready() {
         body = GetNode<Node2D>("Body");
         legs = GetNode<Node2D>("Legs");
+        Global.Instance.player = this;
     }
 
     public void GetInput() {
@@ -35,4 +34,5 @@ public partial class Player : CharacterBody2D {
         GetInput();
         MoveAndSlide();
     }
+    
 }

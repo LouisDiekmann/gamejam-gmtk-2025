@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://dkh8rxmsr5jw6"]
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://dkh8rxmsr5jw6"]
 
-[ext_resource type="Script" uid="uid://bh8u0qcu4lqsj" path="res://Scripts/Weapons/Weapon.cs" id="1_s8mbj"]
+[ext_resource type="Script" uid="uid://bh8u0qcu4lqsj" path="res://Scripts/Weapons/WeaponResource.cs" id="1_5dxkr"]
+[ext_resource type="Texture2D" uid="uid://b4xns5qpt47gp" path="res://Assets/Icons/unconvetional_icons/icons/baseball_bat.png" id="2_5dxkr"]
 
 [resource]
-script = ExtResource("1_s8mbj")
+script = ExtResource("1_5dxkr")
 melee = true
-name = "BaseballBat"
+name = "baseballBat"
+texture = ExtResource("2_5dxkr")
 metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
