@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://covsx4t0xi8xk"]
+[gd_scene load_steps=7 format=3 uid="uid://covsx4t0xi8xk"]
 
 [ext_resource type="Script" uid="uid://stuey12tlj5j" path="res://Scripts/Player.cs" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://by3njc0lmuubh" path="res://Assets/Icons/unconvetional_icons/icons/blunt.png" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://cgsjbxk8f5myu" path="res://Assets/Icons/unconvetional_icons/icons/acid.png" id="2_fkybt"]
 [ext_resource type="Texture2D" uid="uid://cnkdd0meu6pcs" path="res://icon.svg" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://bbg61tyk5p61x" path="res://Scripts/Shooting.cs" id="3_vgqql"]
 
@@ -15,6 +16,10 @@ shape = SubResource("CircleShape2D_v0iea")
 
 [node name="Legs" type="Node2D" parent="."]
 
+[node name="Acid" type="Sprite2D" parent="Legs"]
+texture_filter = 1
+texture = ExtResource("2_fkybt")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 
@@ -25,7 +30,8 @@ texture_filter = 1
 texture = ExtResource("1_v0iea")
 
 [node name="ShootPos" type="Node2D" parent="Body"]
-position = Vector2(0, -5)
+position = Vector2(5, 0)
+rotation = 1.5707964
 script = ExtResource("3_vgqql")
 
 [node name="Icon" type="Sprite2D" parent="Body/ShootPos"]

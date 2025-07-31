@@ -6,21 +6,25 @@ public partial class Player : CharacterBody2D {
     [Export] private float acceleration = 0.1f;
 
     private Node2D body;
+    private Node2D legs;
 
     public override void _Ready() {
         body = GetNode<Node2D>("Body");
+        legs = GetNode<Node2D>("Legs");
     }
 
     public void GetInput() {
         body.LookAt(GetGlobalMousePosition());
-        body.Rotate(90 * Mathf.Pi / 180);
+        //body.Rotate(90 * Mathf.Pi / 180);
         Vector2 inputDirection = Input.GetVector("Left", "Right", "Up", "Down");
         if (inputDirection != Vector2.Zero) {
             Velocity = new Vector2(Mathf.Lerp(Velocity.X, inputDirection.X * speed, acceleration), Mathf.Lerp(Velocity.Y, inputDirection.Y * speed, acceleration));
+            legs.Rotation = inputDirection.Angle();
         }
         else {
             Velocity = new Vector2(Mathf.Lerp(Velocity.X, 0, acceleration), Mathf.Lerp(Velocity.Y, 0, acceleration));
         }
+        
     }
 
     public override void _PhysicsProcess(double delta) {
