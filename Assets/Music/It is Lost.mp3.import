@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://da5gqlsly7hei"
+path="res://.godot/imported/It is Lost.mp3-ff0fc14e4b558bc0acbe608cd2d889b9.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/It is Lost.mp3"
+dest_files=["res://.godot/imported/It is Lost.mp3-ff0fc14e4b558bc0acbe608cd2d889b9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
