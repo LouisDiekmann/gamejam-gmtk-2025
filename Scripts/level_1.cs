@@ -1,5 +1,5 @@
 using Godot;
-using System;
+namespace gamejamgmtk2025.Scripts;
 
-public partial class level_1 : Node2D {
+public partial class Level1 : Node2D {
 }
