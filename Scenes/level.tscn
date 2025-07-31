@@ -13,4 +13,5 @@ texture = ExtResource("2_81xng")
 
 [node name="Player" parent="." instance=ExtResource("3_wqkje")]
 position = Vector2(48, 41)
-Speed = 400
+Speed = 100
+acceleration = 0.10000000000582077
