@@ -9,15 +9,22 @@ public partial class MainMenu : Control {
     
     private ResourceLoader.ThreadLoadStatus scenceLoadProgress = 0.0f;
     
+    [ExportGroup("Panels")]
     [Export] public SettingsResource settingsResource;
     [Export] public Panel settingsPanel;
     [Export] public Panel creditsPanel;
     [Export] public ColorRect loadingScreen;
-
+    
+    [ExportGroup("Settings Sliders")]
     [Export] public HSlider masterVolumeSlider;
     [Export] public HSlider musicVolumeSlider;
     [Export] public HSlider effectsVolumeSlider;
     [Export] public HSlider sensitivitySlider;
+    
+    [ExportGroup("Sounds")]
+    [Export] public AudioStreamPlayer fourClicksSound;
+    [Export] public AudioStreamPlayer synthErrorSound;
+
     
     public override void _Ready() {
         DirAccess.MakeDirAbsolute(settingsDirectory);
@@ -39,23 +46,26 @@ public partial class MainMenu : Control {
             GetTree().ChangeSceneToPacked(newScene as PackedScene);
         }
     }
-
     void _on_play_button_down() {
         loadingScreen.Show();
+        play4ClicksSound();
         ResourceLoader.LoadThreadedRequest(level1ScenePath);
     }
     void _on_settings_button_down() {
+        play4ClicksSound();
         settingsPanel.Visible = !settingsPanel.Visible;
     }
-    
     void _on_credits_button_down() {
+        play4ClicksSound();
         creditsPanel.Visible = !creditsPanel.Visible;
     }
-
     void saveSettings() {
         ResourceSaver.Save(settingsResource, settingsPath);
     }
-
+    void play4ClicksSound() {
+        fourClicksSound.PitchScale = (float)GD.RandRange(0.8, 1.2);
+        fourClicksSound.Play();
+    }
     void _on_master_hslider_value_changed(float value) {
         settingsResource.MasterVolume = value;
     }
