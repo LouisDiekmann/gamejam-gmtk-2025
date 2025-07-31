@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SettingsResource" load_steps=2 format=3 uid="uid://dkfwph7o8ts0r"]
+
+[ext_resource type="Script" uid="uid://bno0f0mkxu0ka" path="res://Scripts/SettingsResource.cs" id="1_6xwwx"]
+
+[resource]
+script = ExtResource("1_6xwwx")
+MasterVolume = 100.0
+MusicVolume = 100.0
+EffectsVolume = 100.0
+Sensitivity = 100.0
+metadata/_custom_type_script = "uid://bno0f0mkxu0ka"

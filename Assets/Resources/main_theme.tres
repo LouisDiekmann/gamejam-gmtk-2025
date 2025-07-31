@@ -1,5 +1,16 @@
-[gd_resource type="Theme" format=3 uid="uid://csuamfp55i22h"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://csuamfp55i22h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmj4s"]
+bg_color = Color(0.5746037, 0.1272968, 0.08530936, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
 Button/font_sizes/font_size = 28
+Button/styles/normal = SubResource("StyleBoxFlat_lmj4s")
+HBoxContainer/constants/separation = 16
 Label/font_sizes/font_size = 28
+VBoxContainer/constants/separation = 8

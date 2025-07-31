@@ -1,16 +1,78 @@
-[gd_scene load_steps=2 format=3 uid="uid://ywc5snjf1ljr"]
+[gd_scene load_steps=10 format=3 uid="uid://ywc5snjf1ljr"]
 
 [ext_resource type="Theme" uid="uid://csuamfp55i22h" path="res://Assets/Resources/main_theme.tres" id="1_28flt"]
+[ext_resource type="Script" uid="uid://c44sx6h7v1j2y" path="res://Scripts/MainMenu.cs" id="1_48xlc"]
+[ext_resource type="AudioStream" uid="uid://cshf4ijgwrbar" path="res://Assets/Music/SCP-x5x.mp3" id="2_1ehe0"]
+[ext_resource type="Resource" uid="uid://dkfwph7o8ts0r" path="res://Assets/Resources/settings_resource.tres" id="2_n45e2"]
+[ext_resource type="Script" uid="uid://dg4f3wc8umt6h" path="res://Scripts/AudioManager.cs" id="3_opfnp"]
+[ext_resource type="FontFile" uid="uid://do2mdms57ekpi" path="res://Assets/Fonts/AlumniSans-Black.ttf" id="4_ce3w2"]
 
-[node name="Control" type="Control"]
+[sub_resource type="Animation" id="Animation_opfnp"]
+resource_name = "loading"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("loading:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["Loading", "Loading.", "Loading..", "Loading..."]
+}
+
+[sub_resource type="Animation" id="Animation_cp0ys"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("loading:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Loading."]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yhxw7"]
+_data = {
+&"RESET": SubResource("Animation_cp0ys"),
+&"loading": SubResource("Animation_opfnp")
+}
+
+[node name="main_menu" type="Control" node_paths=PackedStringArray("settingsPanel", "creditsPanel", "loadingScreen", "masterVolumeSlider", "musicVolumeSlider", "effectsVolumeSlider", "sensitivitySlider")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_48xlc")
+settingsResource = ExtResource("2_n45e2")
+settingsPanel = NodePath("settings_panel")
+creditsPanel = NodePath("credits_panel")
+loadingScreen = NodePath("loading_screen")
+masterVolumeSlider = NodePath("settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider")
+musicVolumeSlider = NodePath("settings_panel/settings_vbox/audio_vbox/music_hbox/music_hslider")
+effectsVolumeSlider = NodePath("settings_panel/settings_vbox/audio_vbox/effects_hbox/effects_hslider")
+sensitivitySlider = NodePath("settings_panel/settings_vbox/controls_vbox/sensitivity_speed_hbox/sensitivity_speed_hslider")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="audio" type="Node" parent="."]
+script = ExtResource("3_opfnp")
+
+[node name="music" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource("2_1ehe0")
+volume_db = -24.44
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="background" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,18 +81,212 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+[node name="vbox_menu_buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 72.0
-offset_top = -113.0
-offset_right = 205.0
-offset_bottom = 113.0
+offset_left = -78.5
+offset_top = -60.5
+offset_right = 78.5
+offset_bottom = 60.5
+grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="play_button" type="Button" parent="vbox_menu_buttons"]
 layout_mode = 2
 theme = ExtResource("1_28flt")
 text = "Play"
+
+[node name="settings_button" type="Button" parent="vbox_menu_buttons"]
+layout_mode = 2
+theme = ExtResource("1_28flt")
+text = "Settings"
+
+[node name="credits_button" type="Button" parent="vbox_menu_buttons"]
+layout_mode = 2
+theme = ExtResource("1_28flt")
+text = "Credits"
+
+[node name="settings_panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -459.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="settings_vbox" type="VBoxContainer" parent="settings_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = 155.0
+offset_right = -57.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="settings_label" type="Label" parent="settings_panel/settings_vbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ce3w2")
+text = "Settings"
+
+[node name="MarginContainer" type="MarginContainer" parent="settings_panel/settings_vbox"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="audio_vbox" type="VBoxContainer" parent="settings_panel/settings_vbox"]
+layout_mode = 2
+
+[node name="audio_label" type="Label" parent="settings_panel/settings_vbox/audio_vbox"]
+layout_mode = 2
+text = "- Audio -"
+horizontal_alignment = 1
+
+[node name="master_hbox" type="HBoxContainer" parent="settings_panel/settings_vbox/audio_vbox"]
+layout_mode = 2
+
+[node name="master_label" type="Label" parent="settings_panel/settings_vbox/audio_vbox/master_hbox"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Master"
+
+[node name="master_hslider" type="HSlider" parent="settings_panel/settings_vbox/audio_vbox/master_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="music_hbox" type="HBoxContainer" parent="settings_panel/settings_vbox/audio_vbox"]
+layout_mode = 2
+
+[node name="music_label" type="Label" parent="settings_panel/settings_vbox/audio_vbox/music_hbox"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Music"
+
+[node name="music_hslider" type="HSlider" parent="settings_panel/settings_vbox/audio_vbox/music_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="effects_hbox" type="HBoxContainer" parent="settings_panel/settings_vbox/audio_vbox"]
+layout_mode = 2
+
+[node name="effects_label" type="Label" parent="settings_panel/settings_vbox/audio_vbox/effects_hbox"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Effects"
+
+[node name="effects_hslider" type="HSlider" parent="settings_panel/settings_vbox/audio_vbox/effects_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="controls_vbox" type="VBoxContainer" parent="settings_panel/settings_vbox"]
+layout_mode = 2
+
+[node name="controls_label" type="Label" parent="settings_panel/settings_vbox/controls_vbox"]
+layout_mode = 2
+text = "- Controls -"
+horizontal_alignment = 1
+
+[node name="sensitivity_speed_hbox" type="HBoxContainer" parent="settings_panel/settings_vbox/controls_vbox"]
+layout_mode = 2
+
+[node name="sensitivity_speed_label" type="Label" parent="settings_panel/settings_vbox/controls_vbox/sensitivity_speed_hbox"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Sensitivity"
+
+[node name="sensitivity_speed_hslider" type="HSlider" parent="settings_panel/settings_vbox/controls_vbox/sensitivity_speed_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="credits_panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_right = 459.0
+grow_vertical = 2
+
+[node name="settings_vbox" type="VBoxContainer" parent="credits_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = 73.0
+offset_right = -57.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="credits_panel/settings_vbox"]
+custom_minimum_size = Vector2(0, 127.86)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Music:
+
+\"SCP-x5x (Outer Thoughts)\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/"
+
+[node name="loading_screen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2120942, 0.004713264, 0.0046982714, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="loading_screen"]
+libraries = {
+&"": SubResource("AnimationLibrary_yhxw7")
+}
+autoplay = "loading"
+
+[node name="loading" type="Label" parent="loading_screen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -39.0
+offset_right = 170.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Loading."
+
+[connection signal="button_down" from="vbox_menu_buttons/play_button" to="." method="_on_play_button_down"]
+[connection signal="button_down" from="vbox_menu_buttons/settings_button" to="." method="_on_settings_button_down"]
+[connection signal="button_down" from="vbox_menu_buttons/credits_button" to="." method="_on_credits_button_down"]
+[connection signal="drag_ended" from="settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider" to="." method="_on_hslider_drag_ended"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider" to="." method="_on_master_hslider_value_changed"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider" to="audio" method="_on_settings_volume_changed"]
+[connection signal="drag_ended" from="settings_panel/settings_vbox/audio_vbox/music_hbox/music_hslider" to="." method="_on_hslider_drag_ended"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/music_hbox/music_hslider" to="." method="_on_music_hslider_value_changed"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/music_hbox/music_hslider" to="audio" method="_on_settings_volume_changed"]
+[connection signal="drag_ended" from="settings_panel/settings_vbox/audio_vbox/effects_hbox/effects_hslider" to="." method="_on_hslider_drag_ended"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/effects_hbox/effects_hslider" to="." method="_on_effects_hslider_value_changed"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/effects_hbox/effects_hslider" to="audio" method="_on_settings_volume_changed"]
+[connection signal="drag_ended" from="settings_panel/settings_vbox/controls_vbox/sensitivity_speed_hbox/sensitivity_speed_hslider" to="." method="_on_hslider_drag_ended"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/controls_vbox/sensitivity_speed_hbox/sensitivity_speed_hslider" to="." method="_on_sensitivity_hslider_value_changed"]

@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="gamejam-gmtk-2025"
-run/main_scene="uid://cw17jrj22h5a"
+run/main_scene="uid://ywc5snjf1ljr"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [dotnet]
 
@@ -26,6 +31,11 @@ folder_colors={
 "res://Scenes/": "orange",
 "res://Scripts/": "yellow"
 }
+
+[gui]
+
+theme/custom="uid://csuamfp55i22h"
+theme/custom_font="uid://ctn4271x4icb2"
 
 [input]
 
