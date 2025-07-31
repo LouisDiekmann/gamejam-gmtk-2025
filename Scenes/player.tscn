@@ -21,7 +21,7 @@ texture_filter = 1
 texture = ExtResource("2_fkybt")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+zoom = Vector2(2, 2)
 
 [node name="Body" type="Node2D" parent="."]
 

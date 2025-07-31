@@ -9,8 +9,10 @@
 script = ExtResource("1_yr2qt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_at5ip")
 
 [node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_f8cdk")
