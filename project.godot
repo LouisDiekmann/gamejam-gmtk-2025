@@ -14,6 +14,11 @@ config/name="gamejam-gmtk-2025"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [dotnet]
 
 project/assembly_name="gamejam-gmtk-2025"
@@ -25,3 +30,8 @@ folder_colors={
 "res://Scenes/": "orange",
 "res://Scripts/": "yellow"
 }
+
+[gui]
+
+theme/custom="uid://csuamfp55i22h"
+theme/custom_font="uid://ctn4271x4icb2"
