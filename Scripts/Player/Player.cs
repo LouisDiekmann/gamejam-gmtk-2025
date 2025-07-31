@@ -9,7 +9,10 @@ public partial class Player : CharacterBody2D {
     private Node2D body;
     private Node2D legs;
 
-    public override void _Ready() {
+    [Export] private Weapon weapon;
+
+    public override void _Ready()
+    {
         body = GetNode<Node2D>("Body");
         legs = GetNode<Node2D>("Legs");
     }
@@ -20,7 +23,7 @@ public partial class Player : CharacterBody2D {
         Vector2 inputDirection = Input.GetVector("Left", "Right", "Up", "Down");
         if (inputDirection != Vector2.Zero) {
             Velocity = new Vector2(Mathf.Lerp(Velocity.X, inputDirection.X * speed, acceleration), Mathf.Lerp(Velocity.Y, inputDirection.Y * speed, acceleration));
-            legs.Rotation = Mathf.LerpAngle(legs.Rotation, inputDirection.Angle() , legLerpFactor);
+            legs.Rotation = Mathf.LerpAngle(legs.Rotation, inputDirection.Angle(), legLerpFactor);
         }
         else {
             Velocity = new Vector2(Mathf.Lerp(Velocity.X, 0, acceleration), Mathf.Lerp(Velocity.Y, 0, acceleration));

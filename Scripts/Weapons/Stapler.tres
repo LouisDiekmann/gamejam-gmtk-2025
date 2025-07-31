@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://qcdq8b3xuf2"]
+
+[ext_resource type="Script" uid="uid://bh8u0qcu4lqsj" path="res://Scripts/Weapons/Weapon.cs" id="1_ydlmg"]
+
+[resource]
+script = ExtResource("1_ydlmg")
+ammo = 10
+name = "Stapler"
+metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
