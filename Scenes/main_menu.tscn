@@ -47,7 +47,7 @@ _data = {
 &"loading": SubResource("Animation_opfnp")
 }
 
-[node name="main_menu" type="CanvasLayer" node_paths=PackedStringArray("settingsPanel", "creditsPanel", "loadingScreen", "masterVolumeSlider", "musicVolumeSlider", "effectsVolumeSlider", "sensitivitySlider", "fourClicksSound", "synthErrorSound", "hoverSound")]
+[node name="main_menu" type="CanvasLayer" node_paths=PackedStringArray("settingsPanel", "creditsPanel", "loadingScreen", "masterVolumeSlider", "musicVolumeSlider", "effectsVolumeSlider", "sensitivitySlider", "fourClicksSound", "hoverSound")]
 script = ExtResource("1_48xlc")
 settingsResource = ExtResource("2_n45e2")
 settingsPanel = NodePath("settings_panel")
@@ -58,7 +58,6 @@ musicVolumeSlider = NodePath("settings_panel/settings_vbox/audio_vbox/music_hbox
 effectsVolumeSlider = NodePath("settings_panel/settings_vbox/audio_vbox/effects_hbox/effects_hslider")
 sensitivitySlider = NodePath("settings_panel/settings_vbox/controls_vbox/sensitivity_speed_hbox/sensitivity_speed_hslider")
 fourClicksSound = NodePath("audio/4clicks")
-synthErrorSound = NodePath("audio/synthError")
 hoverSound = NodePath("audio/synthError")
 
 [node name="audio" type="Node" parent="."]

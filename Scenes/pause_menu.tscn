@@ -7,17 +7,17 @@
 [ext_resource type="AudioStream" uid="uid://c1chb36bl52a6" path="res://Assets/Music/Controlled Chaos.mp3" id="3_sjs17"]
 [ext_resource type="FontFile" uid="uid://do2mdms57ekpi" path="res://Assets/Fonts/AlumniSans-Black.ttf" id="3_vmyb1"]
 [ext_resource type="AudioStream" uid="uid://cnr6b0ixyy4a3" path="res://Assets/SFX/760557__noisyredfox__4-clicks.ogg" id="4_stj27"]
-[ext_resource type="AudioStream" uid="uid://c65sfoordfwnx" path="res://Assets/SFX/794316__sadiquecat__helium-balloon-ui-error-like-sound.wav" id="5_ix48p"]
+[ext_resource type="AudioStream" uid="uid://bejuuqqdr268e" path="res://Assets/SFX/synth-shot-fx-by-alien-i-trust-19-245446.mp3" id="6_u8tnp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_stj27"]
 
-[node name="pause_menu" type="CanvasLayer" node_paths=PackedStringArray("settingsPanel", "fourClicksSound", "synthErrorSound", "masterVolumeSlider", "musicVolumeSlider", "effectsVolumeSlider", "sensitivitySlider")]
+[node name="pause_menu" type="CanvasLayer" node_paths=PackedStringArray("settingsPanel", "fourClicksSound", "hoverSound", "masterVolumeSlider", "musicVolumeSlider", "effectsVolumeSlider", "sensitivitySlider")]
 process_mode = 3
 script = ExtResource("1_1och7")
 settingsPanel = NodePath("settings_panel")
-fourClicksSound = NodePath("audio/4clicks")
-synthErrorSound = NodePath("audio/synthError")
 settingsResource = ExtResource("2_u8tnp")
+fourClicksSound = NodePath("audio/4clicks")
+hoverSound = NodePath("audio/synthError")
 masterVolumeSlider = NodePath("settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider")
 musicVolumeSlider = NodePath("settings_panel/settings_vbox/audio_vbox/music_hbox/music_hslider")
 effectsVolumeSlider = NodePath("settings_panel/settings_vbox/audio_vbox/effects_hbox/effects_hslider")
@@ -25,6 +25,7 @@ sensitivitySlider = NodePath("settings_panel/settings_vbox/controls_vbox/sensiti
 
 [node name="audio" type="Node" parent="."]
 script = ExtResource("2_sjs17")
+settingsResource = ExtResource("2_u8tnp")
 
 [node name="music" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("3_sjs17")
@@ -39,18 +40,18 @@ volume_db = -50.0
 bus = &"Effects"
 
 [node name="synthError" type="AudioStreamPlayer" parent="audio"]
-stream = ExtResource("5_ix48p")
-volume_db = -50.0
+stream = ExtResource("6_u8tnp")
+volume_db = -35.0
 bus = &"Effects"
 
-[node name="credits_panel" type="ColorRect" parent="."]
+[node name="menu_panel" type="ColorRect" parent="."]
 anchors_preset = -1
 anchor_bottom = 1.0
 offset_right = 459.0
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="settings_vbox" type="VBoxContainer" parent="credits_panel"]
+[node name="settings_vbox" type="VBoxContainer" parent="menu_panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -62,7 +63,7 @@ offset_bottom = -59.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="vbox_menu_buttons" type="VBoxContainer" parent="credits_panel"]
+[node name="vbox_menu_buttons" type="VBoxContainer" parent="menu_panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -76,18 +77,18 @@ offset_bottom = 60.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="resume_button" type="Button" parent="credits_panel/vbox_menu_buttons"]
+[node name="resume_button" type="Button" parent="menu_panel/vbox_menu_buttons"]
 material = SubResource("ShaderMaterial_stj27")
 layout_mode = 2
 theme = ExtResource("2_bpi0q")
 text = "Resume"
 
-[node name="settings_button" type="Button" parent="credits_panel/vbox_menu_buttons"]
+[node name="settings_button" type="Button" parent="menu_panel/vbox_menu_buttons"]
 layout_mode = 2
 theme = ExtResource("2_bpi0q")
 text = "Settings"
 
-[node name="main_menu_button" type="Button" parent="credits_panel/vbox_menu_buttons"]
+[node name="main_menu_button" type="Button" parent="menu_panel/vbox_menu_buttons"]
 layout_mode = 2
 theme = ExtResource("2_bpi0q")
 text = "Main Menu"
@@ -195,8 +196,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[connection signal="button_down" from="credits_panel/vbox_menu_buttons/resume_button" to="." method="_on_resume_button_down"]
-[connection signal="button_down" from="credits_panel/vbox_menu_buttons/settings_button" to="." method="_on_settings_button_down"]
+[connection signal="button_down" from="menu_panel/vbox_menu_buttons/resume_button" to="." method="_on_resume_button_down"]
+[connection signal="mouse_entered" from="menu_panel/vbox_menu_buttons/resume_button" to="." method="_on_button_mouse_entered"]
+[connection signal="button_down" from="menu_panel/vbox_menu_buttons/settings_button" to="." method="_on_settings_button_down"]
+[connection signal="mouse_entered" from="menu_panel/vbox_menu_buttons/settings_button" to="." method="_on_button_mouse_entered"]
+[connection signal="button_down" from="menu_panel/vbox_menu_buttons/main_menu_button" to="." method="_on_main_menu_button_down"]
+[connection signal="mouse_entered" from="menu_panel/vbox_menu_buttons/main_menu_button" to="." method="_on_button_mouse_entered"]
 [connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider" to="." method="_on_master_hslider_value_changed"]
 [connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider" to="audio" method="_on_settings_volume_changed"]
 [connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/music_hbox/music_hslider" to="." method="_on_music_hslider_value_changed"]

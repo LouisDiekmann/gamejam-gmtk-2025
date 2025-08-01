@@ -5,12 +5,14 @@ using gamejamgmtk2025.Scripts;
 public partial class PauseMenu : CanvasLayer {
     private const String settingsDirectory = "user://resource/";
     private const String settingsPath = "user://resource/settings.tres";
+    private const String MainMenu = "res://Scenes/main_menu.tscn";
     [Export] public Panel settingsPanel;
-    
+    [Export] public SettingsResource settingsResource;
+
     [ExportGroup("Sounds")]
     [Export] public AudioStreamPlayer fourClicksSound;
-    [Export] public AudioStreamPlayer synthErrorSound;
-    [Export] public SettingsResource settingsResource;
+    [Export] public AudioStreamPlayer hoverSound;
+    
     
     [ExportGroup("Settings Sliders")]
     [Export] public HSlider masterVolumeSlider;
@@ -32,11 +34,18 @@ public partial class PauseMenu : CanvasLayer {
     }
     void _on_resume_button_down() {
         GetTree().Paused = false;
+        settingsPanel.Visible = false;
         Visible = false;
     }
     void _on_settings_button_down() {
         play4ClicksSound();
         settingsPanel.Visible = !settingsPanel.Visible;
+    }
+
+    void _on_main_menu_button_down() {
+        GetTree().Paused = false;
+        PackedScene mainMenuScene = ResourceLoader.Load<PackedScene>(MainMenu);
+        GetTree().ChangeSceneToPacked(mainMenuScene);
     }
     void play4ClicksSound() {
         fourClicksSound.PitchScale = (float)GD.RandRange(0.8, 1.2);
@@ -54,6 +63,11 @@ public partial class PauseMenu : CanvasLayer {
     }
     void _on_sensitivity_hslider_value_changed(float value) {
         settingsResource.Sensitivity = value;
+    }
+    
+    public void _on_button_mouse_entered() {
+        hoverSound.PitchScale = (float)GD.RandRange(0.8f, 1.2f);
+        hoverSound.Play();
     }
     
     void saveSettings() {

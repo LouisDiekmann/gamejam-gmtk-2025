@@ -1,4 +1,11 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://csuamfp55i22h"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://csuamfp55i22h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxk65"]
+bg_color = Color(0.4579874, 0.091350734, 0.059516978, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmj4s"]
 bg_color = Color(0.5746037, 0.1272968, 0.08530936, 1)
@@ -16,6 +23,7 @@ bg_color = Color(0.07246391, 0.084377274, 0.113855965, 1)
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/font_sizes/font_size = 28
+Button/styles/focus = SubResource("StyleBoxFlat_fxk65")
 Button/styles/normal = SubResource("StyleBoxFlat_lmj4s")
 HBoxContainer/constants/separation = 16
 HSlider/styles/slider = SubResource("StyleBoxLine_lmj4s")
