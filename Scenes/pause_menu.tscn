@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://c47200743k2c2"]
+[gd_scene load_steps=9 format=3 uid="uid://c47200743k2c2"]
 
 [ext_resource type="Script" uid="uid://b8gdubng630yb" path="res://Scripts/PauseMenu.cs" id="1_1och7"]
 [ext_resource type="Theme" uid="uid://csuamfp55i22h" path="res://Assets/Resources/main_theme.tres" id="2_bpi0q"]
 [ext_resource type="Script" uid="uid://dg4f3wc8umt6h" path="res://Scripts/AudioManager.cs" id="2_sjs17"]
-[ext_resource type="AudioStream" uid="uid://cshf4ijgwrbar" path="res://Assets/Music/SCP-x5x.mp3" id="3_u8tnp"]
+[ext_resource type="AudioStream" uid="uid://c1chb36bl52a6" path="res://Assets/Music/Controlled Chaos.mp3" id="3_sjs17"]
 [ext_resource type="FontFile" uid="uid://do2mdms57ekpi" path="res://Assets/Fonts/AlumniSans-Black.ttf" id="3_vmyb1"]
 [ext_resource type="AudioStream" uid="uid://cnr6b0ixyy4a3" path="res://Assets/SFX/760557__noisyredfox__4-clicks.ogg" id="4_stj27"]
 [ext_resource type="AudioStream" uid="uid://c65sfoordfwnx" path="res://Assets/SFX/794316__sadiquecat__helium-balloon-ui-error-like-sound.wav" id="5_ix48p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stj27"]
 
 [node name="pause_menu" type="CanvasLayer" node_paths=PackedStringArray("settingsPanel", "fourClicksSound", "synthErrorSound")]
 process_mode = 3
@@ -19,18 +21,21 @@ synthErrorSound = NodePath("audio/synthError")
 script = ExtResource("2_sjs17")
 
 [node name="music" type="AudioStreamPlayer" parent="audio"]
-stream = ExtResource("3_u8tnp")
+stream = ExtResource("3_sjs17")
 volume_db = -50.0
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="4clicks" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("4_stj27")
 volume_db = -50.0
+bus = &"Effects"
 
 [node name="synthError" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("5_ix48p")
 volume_db = -50.0
+bus = &"Effects"
 
 [node name="credits_panel" type="ColorRect" parent="."]
 anchors_preset = -1
@@ -66,6 +71,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="resume_button" type="Button" parent="credits_panel/vbox_menu_buttons"]
+material = SubResource("ShaderMaterial_stj27")
 layout_mode = 2
 theme = ExtResource("2_bpi0q")
 text = "Resume"

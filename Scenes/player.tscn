@@ -1,22 +1,160 @@
-[gd_scene load_steps=8 format=3 uid="uid://covsx4t0xi8xk"]
+[gd_scene load_steps=29 format=3 uid="uid://covsx4t0xi8xk"]
 
 [ext_resource type="Script" uid="uid://stuey12tlj5j" path="res://Scripts/Player/Player.cs" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://by3njc0lmuubh" path="res://Assets/Icons/unconvetional_icons/icons/blunt.png" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://cgsjbxk8f5myu" path="res://Assets/Icons/unconvetional_icons/icons/acid.png" id="2_fkybt"]
 [ext_resource type="Texture2D" uid="uid://cnkdd0meu6pcs" path="res://icon.svg" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://bbg61tyk5p61x" path="res://Scripts/Player/Shooting.cs" id="3_vgqql"]
-[ext_resource type="Resource" uid="uid://qcdq8b3xuf2" path="res://Scripts/Weapons/Stapler.tres" id="5_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://bo4k2gwje2634" path="res://Assets/Player/fussVR.png.png" id="6_h4iuc"]
+[ext_resource type="Texture2D" uid="uid://lbohvkah0r2l" path="res://Assets/Player/fussVL.png.png" id="7_fd4e3"]
+[ext_resource type="Texture2D" uid="uid://6j6h7wb178c5" path="res://Assets/Player/beinHL1.png.png" id="8_qqcod"]
+[ext_resource type="Texture2D" uid="uid://daveeu51rilaf" path="res://Assets/Player/beinHL2.png.png" id="9_igrcy"]
+[ext_resource type="Texture2D" uid="uid://bkljroyx0j0he" path="res://Assets/Player/beinHL3.png.png" id="10_fs7ks"]
+[ext_resource type="Texture2D" uid="uid://bxq672hwslev0" path="res://Assets/Player/beinHR1.png.png" id="11_l6n3p"]
+[ext_resource type="Texture2D" uid="uid://eu7nis4r7jhe" path="res://Assets/Player/beinHR2.png.png" id="12_olqyp"]
+[ext_resource type="Texture2D" uid="uid://c8yj38djlhtdm" path="res://Assets/Player/beinHR3.png.png" id="13_wpjfl"]
+[ext_resource type="Texture2D" uid="uid://bvlbgmpl6fyi4" path="res://Assets/Player/Hintergrund.png" id="14_bi64h"]
+[ext_resource type="Texture2D" uid="uid://cdjssacgc3df8" path="res://Assets/Player/kopf.png.png" id="15_2ijsl"]
+[ext_resource type="Animation" uid="uid://0c4hmhq3xokf" path="res://Assets/Resources/walk.res" id="16_qqcod"]
+[ext_resource type="Animation" uid="uid://c26e53tugt3" path="res://Assets/Resources/idle.res" id="17_igrcy"]
+[ext_resource type="Script" uid="uid://wf00jmhssxti" path="res://Scripts/FootStepsSound.cs" id="18_p1odr"]
+[ext_resource type="AudioStream" uid="uid://b4e3fsuxg2dgh" path="res://Assets/SFX/01-concrete-footsteps-1-6265.wav" id="19_0gysh"]
+[ext_resource type="AudioStream" uid="uid://g8vsrpdw38je" path="res://Assets/SFX/02-concrete-footsteps-1-6265.wav" id="20_vfarp"]
+[ext_resource type="AudioStream" uid="uid://w5ie1a4x0p8x" path="res://Assets/SFX/03-concrete-footsteps-1-6265.wav" id="21_y6uwr"]
+[ext_resource type="AudioStream" uid="uid://grl8he8fcacd" path="res://Assets/SFX/04-concrete-footsteps-1-6265.wav" id="22_83xs0"]
+[ext_resource type="AudioStream" uid="uid://bal2ye1oj2k2n" path="res://Assets/SFX/05-concrete-footsteps-1-6265.wav" id="23_ypfnu"]
+[ext_resource type="AudioStream" uid="uid://cl2yp63r321pr" path="res://Assets/SFX/06-concrete-footsteps-1-6265.wav" id="24_xuaoq"]
+[ext_resource type="AudioStream" uid="uid://dw7yqrk0rvg83" path="res://Assets/SFX/07-concrete-footsteps-1-6265.wav" id="25_wohnl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v0iea"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shooting")]
+[sub_resource type="Animation" id="Animation_0gysh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bodyparts/right_foot:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bodyparts/left_leg_1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bodyparts/left_leg_2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("bodyparts/left_leg_3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("bodyparts/body:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("bodyparts/left_foot:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("bodyparts/right_leg_1:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("bodyparts/right_leg_2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("bodyparts/right_leg_3:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vfarp"]
+_data = {
+&"RESET": SubResource("Animation_0gysh"),
+&"idle": ExtResource("17_igrcy"),
+&"walk": ExtResource("16_qqcod")
+}
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animationPlayer")]
 script = ExtResource("1_cvnsp")
-shooting = NodePath("Body/ShootPos")
+animationPlayer = NodePath("AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_v0iea")
 
 [node name="Legs" type="Node2D" parent="."]
+visible = false
 
 [node name="Acid" type="Sprite2D" parent="Legs"]
 texture_filter = 1
@@ -28,6 +166,7 @@ zoom = Vector2(4, 4)
 [node name="Body" type="Node2D" parent="."]
 
 [node name="Blunt" type="Sprite2D" parent="Body"]
+visible = false
 texture_filter = 1
 texture = ExtResource("1_v0iea")
 
@@ -35,8 +174,84 @@ texture = ExtResource("1_v0iea")
 position = Vector2(5, 0)
 rotation = 1.5707964
 script = ExtResource("3_vgqql")
-weaponResource = ExtResource("5_x3wgy")
 
 [node name="Icon" type="Sprite2D" parent="Body/ShootPos"]
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("3_6t5aa")
+
+[node name="bodyparts" type="Node2D" parent="."]
+scale = Vector2(0.06, 0.06)
+
+[node name="right_foot" type="Sprite2D" parent="bodyparts"]
+texture = ExtResource("6_h4iuc")
+
+[node name="left_foot" type="Sprite2D" parent="bodyparts"]
+texture = ExtResource("7_fd4e3")
+
+[node name="left_leg_1" type="Sprite2D" parent="bodyparts"]
+texture = ExtResource("8_qqcod")
+
+[node name="left_leg_2" type="Sprite2D" parent="bodyparts"]
+texture = ExtResource("9_igrcy")
+
+[node name="left_leg_3" type="Sprite2D" parent="bodyparts"]
+texture = ExtResource("10_fs7ks")
+
+[node name="right_leg_1" type="Sprite2D" parent="bodyparts"]
+texture = ExtResource("11_l6n3p")
+
+[node name="right_leg_2" type="Sprite2D" parent="bodyparts"]
+texture = ExtResource("12_olqyp")
+
+[node name="right_leg_3" type="Sprite2D" parent="bodyparts"]
+texture = ExtResource("13_wpjfl")
+
+[node name="body" type="Sprite2D" parent="bodyparts"]
+texture = ExtResource("14_bi64h")
+
+[node name="head" type="Sprite2D" parent="bodyparts"]
+texture = ExtResource("15_2ijsl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vfarp")
+}
+autoplay = "idle"
+
+[node name="FootSteps" type="Node" parent="."]
+script = ExtResource("18_p1odr")
+
+[node name="step1" type="AudioStreamPlayer" parent="FootSteps"]
+stream = ExtResource("19_0gysh")
+volume_db = -20.0
+bus = &"Effects"
+
+[node name="step2" type="AudioStreamPlayer" parent="FootSteps"]
+stream = ExtResource("20_vfarp")
+volume_db = -20.0
+bus = &"Effects"
+
+[node name="step3" type="AudioStreamPlayer" parent="FootSteps"]
+stream = ExtResource("21_y6uwr")
+volume_db = -20.0
+bus = &"Effects"
+
+[node name="step4" type="AudioStreamPlayer" parent="FootSteps"]
+stream = ExtResource("22_83xs0")
+volume_db = -20.0
+bus = &"Effects"
+
+[node name="step5" type="AudioStreamPlayer" parent="FootSteps"]
+stream = ExtResource("23_ypfnu")
+volume_db = -20.0
+bus = &"Effects"
+
+[node name="step6" type="AudioStreamPlayer" parent="FootSteps"]
+stream = ExtResource("24_xuaoq")
+volume_db = -20.0
+bus = &"Effects"
+
+[node name="step7" type="AudioStreamPlayer" parent="FootSteps"]
+stream = ExtResource("25_wohnl")
+volume_db = -20.0
+bus = &"Effects"

@@ -6,13 +6,15 @@ public partial class Player : CharacterBody2D {
     [Export] private float acceleration = 0.1f;
     [Export] private float legLerpFactor = 0.2f;
     [Export] public Shooting shooting;
+    [Export] public AnimationPlayer animationPlayer;
+    [Export] public FootStepsSound footSteps;
 
     private Node2D body;
     private Node2D legs;
 
     public override void _Ready() {
-        body = GetNode<Node2D>("Body");
-        legs = GetNode<Node2D>("Legs");
+        body = GetNode<Node2D>("bodyparts");
+        legs = GetNode<Node2D>("bodyparts");
         Global.Instance.player = this;
     }
 
@@ -23,9 +25,13 @@ public partial class Player : CharacterBody2D {
         if (inputDirection != Vector2.Zero) {
             Velocity = new Vector2(Mathf.Lerp(Velocity.X, inputDirection.X * speed, acceleration), Mathf.Lerp(Velocity.Y, inputDirection.Y * speed, acceleration));
             legs.Rotation = Mathf.LerpAngle(legs.Rotation, inputDirection.Angle(), legLerpFactor);
+            FootStepsSound.playing = true;
+            animationPlayer.Play("walk");
         }
         else {
             Velocity = new Vector2(Mathf.Lerp(Velocity.X, 0, acceleration), Mathf.Lerp(Velocity.Y, 0, acceleration));
+            FootStepsSound.playing = false;
+            animationPlayer.Stop();
         }
         
     }
