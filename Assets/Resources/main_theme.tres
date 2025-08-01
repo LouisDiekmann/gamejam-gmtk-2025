@@ -1,14 +1,14 @@
 [gd_resource type="Theme" load_steps=5 format=3 uid="uid://csuamfp55i22h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxk65"]
-bg_color = Color(0.4579874, 0.091350734, 0.059516978, 1)
+bg_color = Color(0.7459414, 9.62615e-08, 0.40989327, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmj4s"]
-bg_color = Color(0.5746037, 0.1272968, 0.08530936, 1)
+bg_color = Color(0.94509804, 0, 0.5254902, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4

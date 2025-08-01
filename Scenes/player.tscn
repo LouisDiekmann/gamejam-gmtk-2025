@@ -208,7 +208,6 @@ scale = Vector2(0.06, 0.06)
 texture = ExtResource("13_wpjfl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
 
 [node name="Body" type="Node2D" parent="."]
 
