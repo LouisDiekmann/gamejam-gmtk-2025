@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw17jrj22h5a"]
+[gd_scene load_steps=6 format=3 uid="uid://k7nvl1atrsuv"]
 
 [ext_resource type="Script" uid="uid://b0xr82np2yfho" path="res://Scripts/Level.cs" id="1_6phgx"]
-[ext_resource type="Texture2D" uid="uid://c45mrysxfyrec" path="res://Assets/Icons/unconvetional_icons/icon-sheet.png" id="2_81xng"]
 [ext_resource type="PackedScene" uid="uid://c47200743k2c2" path="res://Scenes/pause_menu.tscn" id="2_wqkje"]
+[ext_resource type="Texture2D" uid="uid://d3b58q8acs22i" path="res://Assets/Images/bg.webp" id="3_81xng"]
 [ext_resource type="PackedScene" uid="uid://covsx4t0xi8xk" path="res://Scenes/player.tscn" id="3_wqkje"]
+[ext_resource type="Texture2D" uid="uid://dxl7x8srgt254" path="res://Assets/Images/Screenshot 2025-08-01 162403.png" id="4_wqkje"]
 
 [node name="level_1" type="Node2D" node_paths=PackedStringArray("pauseMenu")]
 script = ExtResource("1_6phgx")
@@ -13,8 +14,14 @@ pauseMenu = NodePath("pause_menu")
 visible = false
 
 [node name="IconSheet" type="Sprite2D" parent="."]
-position = Vector2(6, -8)
-texture = ExtResource("2_81xng")
+texture = ExtResource("3_81xng")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(965.0274, 547.25)
+scale = Vector2(0.7529534, 0.7529534)
+texture = ExtResource("4_wqkje")
 
 [node name="Player" parent="." instance=ExtResource("3_wqkje")]
-position = Vector2(48, 41)
+scale = Vector2(2.75, 2.75)
+speed = 400
