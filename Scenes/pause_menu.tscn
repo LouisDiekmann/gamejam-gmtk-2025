@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c47200743k2c2"]
+[gd_scene load_steps=10 format=3 uid="uid://c47200743k2c2"]
 
 [ext_resource type="Script" uid="uid://b8gdubng630yb" path="res://Scripts/PauseMenu.cs" id="1_1och7"]
 [ext_resource type="Theme" uid="uid://csuamfp55i22h" path="res://Assets/Resources/main_theme.tres" id="2_bpi0q"]
 [ext_resource type="Script" uid="uid://dg4f3wc8umt6h" path="res://Scripts/AudioManager.cs" id="2_sjs17"]
+[ext_resource type="Resource" uid="uid://dkfwph7o8ts0r" path="res://Assets/Resources/settings_resource.tres" id="2_u8tnp"]
 [ext_resource type="AudioStream" uid="uid://c1chb36bl52a6" path="res://Assets/Music/Controlled Chaos.mp3" id="3_sjs17"]
 [ext_resource type="FontFile" uid="uid://do2mdms57ekpi" path="res://Assets/Fonts/AlumniSans-Black.ttf" id="3_vmyb1"]
 [ext_resource type="AudioStream" uid="uid://cnr6b0ixyy4a3" path="res://Assets/SFX/760557__noisyredfox__4-clicks.ogg" id="4_stj27"]
@@ -10,12 +11,17 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_stj27"]
 
-[node name="pause_menu" type="CanvasLayer" node_paths=PackedStringArray("settingsPanel", "fourClicksSound", "synthErrorSound")]
+[node name="pause_menu" type="CanvasLayer" node_paths=PackedStringArray("settingsPanel", "fourClicksSound", "synthErrorSound", "masterVolumeSlider", "musicVolumeSlider", "effectsVolumeSlider", "sensitivitySlider")]
 process_mode = 3
 script = ExtResource("1_1och7")
 settingsPanel = NodePath("settings_panel")
 fourClicksSound = NodePath("audio/4clicks")
 synthErrorSound = NodePath("audio/synthError")
+settingsResource = ExtResource("2_u8tnp")
+masterVolumeSlider = NodePath("settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider")
+musicVolumeSlider = NodePath("settings_panel/settings_vbox/audio_vbox/music_hbox/music_hslider")
+effectsVolumeSlider = NodePath("settings_panel/settings_vbox/audio_vbox/effects_hbox/effects_hslider")
+sensitivitySlider = NodePath("settings_panel/settings_vbox/controls_vbox/sensitivity_speed_hbox/sensitivity_speed_hslider")
 
 [node name="audio" type="Node" parent="."]
 script = ExtResource("2_sjs17")
@@ -87,6 +93,7 @@ theme = ExtResource("2_bpi0q")
 text = "Main Menu"
 
 [node name="settings_panel" type="Panel" parent="."]
+visible = false
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -190,3 +197,10 @@ size_flags_vertical = 4
 
 [connection signal="button_down" from="credits_panel/vbox_menu_buttons/resume_button" to="." method="_on_resume_button_down"]
 [connection signal="button_down" from="credits_panel/vbox_menu_buttons/settings_button" to="." method="_on_settings_button_down"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider" to="." method="_on_master_hslider_value_changed"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider" to="audio" method="_on_settings_volume_changed"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/music_hbox/music_hslider" to="." method="_on_music_hslider_value_changed"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/music_hbox/music_hslider" to="audio" method="_on_settings_volume_changed"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/effects_hbox/effects_hslider" to="." method="_on_effects_hslider_value_changed"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/effects_hbox/effects_hslider" to="audio" method="_on_settings_volume_changed"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/controls_vbox/sensitivity_speed_hbox/sensitivity_speed_hslider" to="." method="_on_sensitivity_speed_hslider_value_changed"]
