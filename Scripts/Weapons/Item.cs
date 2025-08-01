@@ -3,6 +3,7 @@ using System;
 
 public partial class Item : Node2D {
     [Export] public WeaponResource weaponResource;
+    [Export] public int pickupRange = 16;
 
     private Sprite2D sprite2D;
 
@@ -19,7 +20,7 @@ public partial class Item : Node2D {
     
     private void pickupItem() {
         if (Input.IsActionJustPressed("Throw") && Global.Instance.player.shooting.weaponResource == null) {
-            if ((Global.Instance.player.GlobalPosition - GlobalPosition).Length() < 10) {
+            if ((Global.Instance.player.GlobalPosition - GlobalPosition).Length() < pickupRange) {
                 Global.Instance.player.shooting.weaponResource = weaponResource;
                 QueueFree();
             }

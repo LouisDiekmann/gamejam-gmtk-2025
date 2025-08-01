@@ -29,7 +29,7 @@ public partial class Shooting : Node2D {
         }
     }
 
-    private void throwItem(){
+    private void throwItem() {
         if (Input.IsActionJustPressed("Throw") && weaponResource != null) {
             PackedScene weaponScene = GD.Load<PackedScene>("res://Scenes/weapon.tscn");
             Item weaponDump = weaponScene.Instantiate<Item>();
