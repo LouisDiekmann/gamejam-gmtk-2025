@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 public partial class Projectile : Area2D {
-    [Export] public float speed = 8;
+    [Export] public float speed = 16;
     [Export] public float ttl = 5;
 
     private double time = 0;

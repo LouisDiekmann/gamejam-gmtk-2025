@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://c5d18rquycude"]
+
+[ext_resource type="Script" uid="uid://bh8u0qcu4lqsj" path="res://Scripts/Weapons/WeaponResource.cs" id="1_vwhyx"]
+[ext_resource type="Texture2D" uid="uid://dawwcq5clhcy7" path="res://Assets/Icons/unconvetional_icons/icons/fork_gold.png" id="2_3bfiy"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_vwhyx")
+name = "doubleBarrel"
+firerate = 1.0
+spread = 0.25
+pellets = 6
+ammo = 2
+texture = ExtResource("2_3bfiy")
+metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"

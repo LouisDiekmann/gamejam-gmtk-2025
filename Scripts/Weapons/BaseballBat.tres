@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://b4xns5qpt47gp" path="res://Assets/Icons/unconvetional_icons/icons/baseball_bat.png" id="2_5dxkr"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_5dxkr")
-melee = true
 name = "baseballBat"
+melee = true
+firerate = 1.0
 texture = ExtResource("2_5dxkr")
 metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"

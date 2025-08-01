@@ -7,33 +7,60 @@ public partial class Shooting : Node2D {
     private Area2D hurtbox;
     [Signal] public delegate void KillEventHandler();
     [Signal] public delegate void PunchEventHandler();
+    private double timer = 12;
 
     public override void _Ready() {
         hurtbox = GetNode<Area2D>("Hurtbox");
     }
 
     public override void _PhysicsProcess(double delta) {
-        attack();
+        attackStyle(delta);
         throwItem();
     }
 
-    private void attack() {
-        if (Input.IsActionJustPressed("Attack")) {
-            if (weaponResource == null) {
+    private void attackStyle(double delta) {
+        if (weaponResource == null) {
+            if (Input.IsActionJustPressed("Attack")) {
                 EmitSignal(SignalName.Punch);
-            } else if (weaponResource.melee) {
-                EmitSignal(SignalName.Kill);
-            } else {
-                if (weaponResource.ammo > 0) {
-                    PackedScene projectileScene = GD.Load<PackedScene>("res://Scenes/projectile.tscn");
-                    Projectile projectile = projectileScene.Instantiate<Projectile>();
-                    projectile.Position = GlobalPosition;
-                    projectile.Rotation = GlobalRotation;
-                    GetTree().Root.AddChild(projectile);
-                    weaponResource.ammo -= 1;
-                }
+            }
+        } else if (weaponResource.auto) {
+            if (Input.IsActionPressed("Attack")) {
+                attack(delta);
+            }
+        } else {
+            if (Input.IsActionJustPressed("Attack")) {
+                attack(delta);
             }
         }
+        timer += delta;
+    }
+
+    private void attack(double delta) {
+        if (timer > weaponResource.firerate) {
+            if (weaponResource.melee) {
+                EmitSignal(SignalName.Kill);
+            } else if (weaponResource.ammo > 0) {
+                if (weaponResource.pellets > 0) {
+                    for (int i = 0; i < weaponResource.pellets; ++i) {
+                        makeBullet();
+                    }
+                } else {
+                    makeBullet();
+                }
+                weaponResource.ammo -= 1;
+            }
+            timer = 0;
+        }
+    }
+
+    private void makeBullet() {
+        PackedScene projectileScene = GD.Load<PackedScene>("res://Scenes/projectile.tscn");
+        Projectile projectile = projectileScene.Instantiate<Projectile>();
+        projectile.Position = GlobalPosition;
+        Random rng = new Random();
+        projectile.Rotation = GlobalRotation + (float)((rng.NextDouble() * 2.0) - 1.0)*weaponResource.spread;
+        GetTree().Root.AddChild(projectile);
+        
     }
 
     private void throwItem() {
