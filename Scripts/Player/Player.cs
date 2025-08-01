@@ -27,8 +27,7 @@ public partial class Player : CharacterBody2D {
             legs.Rotation = Mathf.LerpAngle(legs.Rotation, inputDirection.Angle(), legLerpFactor);
             FootStepsSound.playing = true;
             animationPlayer.Play("walk");
-        }
-        else {
+        } else {
             Velocity = new Vector2(Mathf.Lerp(Velocity.X, 0, acceleration), Mathf.Lerp(Velocity.Y, 0, acceleration));
             FootStepsSound.playing = false;
             animationPlayer.Stop();

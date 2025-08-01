@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://brcysts0mxpfe"]
+
+[ext_resource type="Script" uid="uid://dn5jqua64udmk" path="res://Scripts/EnemyType.cs" id="1_0rwgo"]
+[ext_resource type="Texture2D" uid="uid://o34tlagpg0ki" path="res://Assets/Icons/unconvetional_icons/icons/amanita_green.png" id="1_o2nhp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_avrf8"]
+
+[node name="EnemyType" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_0rwgo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_avrf8")
+
+[node name="AmanitaGreen" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, 0)
+texture = ExtResource("1_o2nhp")
+
+[node name="DetectCast" type="RayCast2D" parent="."]
