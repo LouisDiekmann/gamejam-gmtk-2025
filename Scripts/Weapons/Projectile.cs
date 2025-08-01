@@ -3,6 +3,7 @@ using System;
 
 public partial class Projectile : Area2D {
     [Export] public float speed = 8;
+    public bool controllable = false;
     public float rng = 0;
     private float oldLength = 100000;
     private Sprite2D sprite2D;
@@ -15,7 +16,7 @@ public partial class Projectile : Area2D {
         Position += new Vector2(0, -speed).Rotated(Rotation);
         float turn = GetLocalMousePosition().Angle() + 90 * Mathf.Pi / 180;
 
-        if (oldLength < (GetGlobalMousePosition() - Position).Length()) {
+        if (oldLength < (GetGlobalMousePosition() - Position).Length() && controllable) {
             if (turn < 1.5 && turn > -1.5) {
                 Rotation += GetLocalMousePosition().Angle() + 90 * Mathf.Pi / 180 + rng;
             }

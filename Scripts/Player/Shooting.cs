@@ -61,6 +61,7 @@ public partial class Shooting : Node2D {
         float spreadRng = (float)((rng.NextDouble() * 2.0) - 1.0) * weaponResource.spread;
         projectile.Rotation = GlobalRotation + spreadRng;
         projectile.rng = spreadRng;
+        projectile.controllable = true;
         GetTree().Root.AddChild(projectile);
         
     }
