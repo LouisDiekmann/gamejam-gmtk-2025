@@ -32,12 +32,16 @@ public partial class Player : CharacterBody2D {
             FootStepsSound.playing = false;
             animationPlayer.Stop();
         }
-        
+
     }
 
     public override void _PhysicsProcess(double delta) {
         GetInput();
         MoveAndSlide();
+    }
+
+    public void death() {
+        GD.Print("you died, haha");
     }
     
 }

@@ -1,15 +1,16 @@
-[gd_scene load_steps=28 format=3 uid="uid://covsx4t0xi8xk"]
+[gd_scene load_steps=30 format=3 uid="uid://covsx4t0xi8xk"]
 
 [ext_resource type="Script" uid="uid://stuey12tlj5j" path="res://Scripts/Player/Player.cs" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://cnkdd0meu6pcs" path="res://icon.svg" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://bbg61tyk5p61x" path="res://Scripts/Player/Shooting.cs" id="3_vgqql"]
-[ext_resource type="Resource" uid="uid://qcdq8b3xuf2" path="res://Scripts/Weapons/Stapler.tres" id="5_0gysh"]
 [ext_resource type="Texture2D" uid="uid://bo4k2gwje2634" path="res://Assets/Player/fussVR.png.png" id="6_h4iuc"]
 [ext_resource type="Texture2D" uid="uid://lbohvkah0r2l" path="res://Assets/Player/fussVL.png.png" id="7_fd4e3"]
 [ext_resource type="Texture2D" uid="uid://6j6h7wb178c5" path="res://Assets/Player/beinHL1.png.png" id="8_qqcod"]
 [ext_resource type="Texture2D" uid="uid://daveeu51rilaf" path="res://Assets/Player/beinHL2.png.png" id="9_igrcy"]
 [ext_resource type="Texture2D" uid="uid://bkljroyx0j0he" path="res://Assets/Player/beinHL3.png.png" id="10_fs7ks"]
 [ext_resource type="Texture2D" uid="uid://bxq672hwslev0" path="res://Assets/Player/beinHR1.png.png" id="11_l6n3p"]
+[ext_resource type="Script" uid="uid://bh8u0qcu4lqsj" path="res://Scripts/Weapons/WeaponResource.cs" id="11_p1odr"]
+[ext_resource type="Texture2D" uid="uid://cwxyl3au768l4" path="res://Assets/Icons/unconvetional_icons/icons/hammer.png" id="12_0gysh"]
 [ext_resource type="Texture2D" uid="uid://eu7nis4r7jhe" path="res://Assets/Player/beinHR2.png.png" id="12_olqyp"]
 [ext_resource type="Texture2D" uid="uid://c8yj38djlhtdm" path="res://Assets/Player/beinHR3.png.png" id="13_wpjfl"]
 [ext_resource type="Texture2D" uid="uid://bvlbgmpl6fyi4" path="res://Assets/Player/Hintergrund.png" id="14_bi64h"]
@@ -26,6 +27,13 @@
 [ext_resource type="AudioStream" uid="uid://dw7yqrk0rvg83" path="res://Assets/SFX/07-concrete-footsteps-1-6265.wav" id="25_wohnl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v0iea"]
+
+[sub_resource type="Resource" id="Resource_vfarp"]
+script = ExtResource("11_p1odr")
+ammo = 10
+name = "stapler"
+texture = ExtResource("12_0gysh")
+metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
 
 [sub_resource type="Animation" id="Animation_0gysh"]
 length = 0.001
@@ -145,7 +153,7 @@ _data = {
 &"walk": ExtResource("16_qqcod")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shooting", "animationPlayer", "footSteps")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shooting", "animationPlayer", "footSteps") groups=["Player"]]
 script = ExtResource("1_cvnsp")
 shooting = NodePath("Body/ShootPos")
 animationPlayer = NodePath("AnimationPlayer")
@@ -202,10 +210,10 @@ zoom = Vector2(4, 4)
 [node name="Body" type="Node2D" parent="."]
 
 [node name="ShootPos" type="Node2D" parent="Body"]
-position = Vector2(5, 0)
+position = Vector2(12, 0)
 rotation = 1.5707964
 script = ExtResource("3_vgqql")
-weaponResource = ExtResource("5_0gysh")
+weaponResource = SubResource("Resource_vfarp")
 
 [node name="Icon" type="Sprite2D" parent="Body/ShootPos"]
 scale = Vector2(0.01, 0.01)

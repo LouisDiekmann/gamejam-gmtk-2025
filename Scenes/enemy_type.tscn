@@ -1,20 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://brcysts0mxpfe"]
+[gd_scene load_steps=7 format=3 uid="uid://brcysts0mxpfe"]
 
 [ext_resource type="Script" uid="uid://dn5jqua64udmk" path="res://Scripts/EnemyType.cs" id="1_0rwgo"]
 [ext_resource type="Texture2D" uid="uid://o34tlagpg0ki" path="res://Assets/Icons/unconvetional_icons/icons/amanita_green.png" id="1_o2nhp"]
+[ext_resource type="Script" uid="uid://bh8u0qcu4lqsj" path="res://Scripts/Weapons/WeaponResource.cs" id="2_ksqip"]
+[ext_resource type="Texture2D" uid="uid://cwxyl3au768l4" path="res://Assets/Icons/unconvetional_icons/icons/hammer.png" id="3_gy24p"]
+
+[sub_resource type="Resource" id="Resource_rr6es"]
+script = ExtResource("2_ksqip")
+ammo = 10
+name = "stapler"
+texture = ExtResource("3_gy24p")
+metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_avrf8"]
 
-[node name="EnemyType" type="RigidBody2D"]
+[node name="EnemyType" type="RigidBody2D" groups=["Enemy"]]
 gravity_scale = 0.0
 script = ExtResource("1_0rwgo")
+weaponResource = SubResource("Resource_rr6es")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
 shape = SubResource("CircleShape2D_avrf8")
 
 [node name="AmanitaGreen" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-1, 0)
+rotation = 1.5707964
 texture = ExtResource("1_o2nhp")
 
 [node name="DetectCast" type="RayCast2D" parent="."]
+
+[node name="ShootPos" type="Node2D" parent="." groups=["Enemy"]]
+position = Vector2(12, 0)

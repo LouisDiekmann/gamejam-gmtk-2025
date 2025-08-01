@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cw17jrj22h5a"]
+[gd_scene load_steps=8 format=3 uid="uid://cw17jrj22h5a"]
 
 [ext_resource type="Script" uid="uid://b0xr82np2yfho" path="res://Scripts/Level.cs" id="1_6phgx"]
 [ext_resource type="Texture2D" uid="uid://c45mrysxfyrec" path="res://Assets/Icons/unconvetional_icons/icon-sheet.png" id="2_81xng"]
 [ext_resource type="PackedScene" uid="uid://c47200743k2c2" path="res://Scenes/pause_menu.tscn" id="2_wqkje"]
 [ext_resource type="PackedScene" uid="uid://covsx4t0xi8xk" path="res://Scenes/player.tscn" id="3_wqkje"]
 [ext_resource type="PackedScene" uid="uid://brcysts0mxpfe" path="res://Scenes/enemy_type.tscn" id="5_wqkje"]
+[ext_resource type="Resource" uid="uid://qcdq8b3xuf2" path="res://Scripts/Weapons/Stapler.tres" id="6_0f350"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wqkje"]
 size = Vector2(79, 20)
@@ -17,6 +18,7 @@ pauseMenu = NodePath("pause_menu")
 visible = false
 
 [node name="IconSheet" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(6, -8)
 texture = ExtResource("2_81xng")
 
@@ -25,6 +27,7 @@ position = Vector2(48, 41)
 
 [node name="EnemyType" parent="." instance=ExtResource("5_wqkje")]
 position = Vector2(95, -42)
+weaponResource = ExtResource("6_0f350")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
