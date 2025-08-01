@@ -1,0 +1,192 @@
+[gd_scene load_steps=9 format=3 uid="uid://c47200743k2c2"]
+
+[ext_resource type="Script" uid="uid://b8gdubng630yb" path="res://Scripts/PauseMenu.cs" id="1_1och7"]
+[ext_resource type="Theme" uid="uid://csuamfp55i22h" path="res://Assets/Resources/main_theme.tres" id="2_bpi0q"]
+[ext_resource type="Script" uid="uid://dg4f3wc8umt6h" path="res://Scripts/AudioManager.cs" id="2_sjs17"]
+[ext_resource type="AudioStream" uid="uid://c1chb36bl52a6" path="res://Assets/Music/Controlled Chaos.mp3" id="3_sjs17"]
+[ext_resource type="FontFile" uid="uid://do2mdms57ekpi" path="res://Assets/Fonts/AlumniSans-Black.ttf" id="3_vmyb1"]
+[ext_resource type="AudioStream" uid="uid://cnr6b0ixyy4a3" path="res://Assets/SFX/760557__noisyredfox__4-clicks.ogg" id="4_stj27"]
+[ext_resource type="AudioStream" uid="uid://c65sfoordfwnx" path="res://Assets/SFX/794316__sadiquecat__helium-balloon-ui-error-like-sound.wav" id="5_ix48p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stj27"]
+
+[node name="pause_menu" type="CanvasLayer" node_paths=PackedStringArray("settingsPanel", "fourClicksSound", "synthErrorSound")]
+process_mode = 3
+script = ExtResource("1_1och7")
+settingsPanel = NodePath("settings_panel")
+fourClicksSound = NodePath("audio/4clicks")
+synthErrorSound = NodePath("audio/synthError")
+
+[node name="audio" type="Node" parent="."]
+script = ExtResource("2_sjs17")
+
+[node name="music" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource("3_sjs17")
+volume_db = -50.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="4clicks" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource("4_stj27")
+volume_db = -50.0
+bus = &"Effects"
+
+[node name="synthError" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource("5_ix48p")
+volume_db = -50.0
+bus = &"Effects"
+
+[node name="credits_panel" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_right = 459.0
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="settings_vbox" type="VBoxContainer" parent="credits_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = 73.0
+offset_right = -57.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vbox_menu_buttons" type="VBoxContainer" parent="credits_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -60.5
+offset_right = 78.5
+offset_bottom = 60.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="resume_button" type="Button" parent="credits_panel/vbox_menu_buttons"]
+material = SubResource("ShaderMaterial_stj27")
+layout_mode = 2
+theme = ExtResource("2_bpi0q")
+text = "Resume"
+
+[node name="settings_button" type="Button" parent="credits_panel/vbox_menu_buttons"]
+layout_mode = 2
+theme = ExtResource("2_bpi0q")
+text = "Settings"
+
+[node name="main_menu_button" type="Button" parent="credits_panel/vbox_menu_buttons"]
+layout_mode = 2
+theme = ExtResource("2_bpi0q")
+text = "Main Menu"
+
+[node name="settings_panel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -459.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="settings_vbox" type="VBoxContainer" parent="settings_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = 155.0
+offset_right = -57.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="settings_label" type="Label" parent="settings_panel/settings_vbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vmyb1")
+text = "Settings"
+
+[node name="MarginContainer" type="MarginContainer" parent="settings_panel/settings_vbox"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="audio_vbox" type="VBoxContainer" parent="settings_panel/settings_vbox"]
+layout_mode = 2
+
+[node name="audio_label" type="Label" parent="settings_panel/settings_vbox/audio_vbox"]
+layout_mode = 2
+text = "- Audio -"
+horizontal_alignment = 1
+
+[node name="master_hbox" type="HBoxContainer" parent="settings_panel/settings_vbox/audio_vbox"]
+layout_mode = 2
+
+[node name="master_label" type="Label" parent="settings_panel/settings_vbox/audio_vbox/master_hbox"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Master"
+
+[node name="master_hslider" type="HSlider" parent="settings_panel/settings_vbox/audio_vbox/master_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="music_hbox" type="HBoxContainer" parent="settings_panel/settings_vbox/audio_vbox"]
+layout_mode = 2
+
+[node name="music_label" type="Label" parent="settings_panel/settings_vbox/audio_vbox/music_hbox"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Music"
+
+[node name="music_hslider" type="HSlider" parent="settings_panel/settings_vbox/audio_vbox/music_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="effects_hbox" type="HBoxContainer" parent="settings_panel/settings_vbox/audio_vbox"]
+layout_mode = 2
+
+[node name="effects_label" type="Label" parent="settings_panel/settings_vbox/audio_vbox/effects_hbox"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Effects"
+
+[node name="effects_hslider" type="HSlider" parent="settings_panel/settings_vbox/audio_vbox/effects_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="controls_vbox" type="VBoxContainer" parent="settings_panel/settings_vbox"]
+layout_mode = 2
+
+[node name="controls_label" type="Label" parent="settings_panel/settings_vbox/controls_vbox"]
+layout_mode = 2
+text = "- Controls -"
+horizontal_alignment = 1
+
+[node name="sensitivity_speed_hbox" type="HBoxContainer" parent="settings_panel/settings_vbox/controls_vbox"]
+layout_mode = 2
+
+[node name="sensitivity_speed_label" type="Label" parent="settings_panel/settings_vbox/controls_vbox/sensitivity_speed_hbox"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Sensitivity"
+
+[node name="sensitivity_speed_hslider" type="HSlider" parent="settings_panel/settings_vbox/controls_vbox/sensitivity_speed_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[connection signal="button_down" from="credits_panel/vbox_menu_buttons/resume_button" to="." method="_on_resume_button_down"]
+[connection signal="button_down" from="credits_panel/vbox_menu_buttons/settings_button" to="." method="_on_settings_button_down"]
