@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cw17jrj22h5a"]
+[gd_scene load_steps=9 format=3 uid="uid://cw17jrj22h5a"]
 
 [ext_resource type="Script" uid="uid://b0xr82np2yfho" path="res://Scripts/Level.cs" id="1_6phgx"]
 [ext_resource type="Texture2D" uid="uid://c45mrysxfyrec" path="res://Assets/Icons/unconvetional_icons/icon-sheet.png" id="2_81xng"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://covsx4t0xi8xk" path="res://Scenes/player.tscn" id="3_wqkje"]
 [ext_resource type="PackedScene" uid="uid://brcysts0mxpfe" path="res://Scenes/enemy_type.tscn" id="5_wqkje"]
 [ext_resource type="Resource" uid="uid://qcdq8b3xuf2" path="res://Scripts/Weapons/Stapler.tres" id="6_0f350"]
+[ext_resource type="PackedScene" uid="uid://b2g6sr53j558a" path="res://Scenes/weapon.tscn" id="7_8c0lf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wqkje"]
 size = Vector2(79, 20)
@@ -34,3 +35,6 @@ weaponResource = ExtResource("6_0f350")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(100, 3)
 shape = SubResource("RectangleShape2D_wqkje")
+
+[node name="Stapler" parent="." instance=ExtResource("7_8c0lf")]
+position = Vector2(111, 36)

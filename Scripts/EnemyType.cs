@@ -8,6 +8,8 @@ public partial class EnemyType : RigidBody2D {
     private double timer = 0;
     private double attackTimer = 0;
     private Node2D shootPos;
+    private bool isKO = false;
+    [Export] private float koDuration = 3;
     [Export] private float fireRate = 0.5f;
     [Export] private float timeToGoBack = 5;
     [Export] private float speed = 0.01f;
@@ -21,7 +23,15 @@ public partial class EnemyType : RigidBody2D {
     }
 
     public override void _PhysicsProcess(double delta) {
-        findPlayer(delta);
+        if (isKO) {
+            timer += delta;
+            if (timer > koDuration) {
+                timer = 0;
+                isKO = false;
+            }
+        } else {
+            findPlayer(delta);
+        }
     }
 
     private void findPlayer(double delta) {
@@ -64,5 +74,10 @@ public partial class EnemyType : RigidBody2D {
         weaponDump.Rotation = GlobalRotation;
         GetTree().Root.AddChild(weaponDump);
         QueueFree();
+    }
+
+    public void knockout() {
+        isKO = true;
+        timer = 0;
     }
 }
