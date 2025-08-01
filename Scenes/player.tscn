@@ -1,10 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://covsx4t0xi8xk"]
+[gd_scene load_steps=28 format=3 uid="uid://covsx4t0xi8xk"]
 
 [ext_resource type="Script" uid="uid://stuey12tlj5j" path="res://Scripts/Player/Player.cs" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://by3njc0lmuubh" path="res://Assets/Icons/unconvetional_icons/icons/blunt.png" id="1_v0iea"]
-[ext_resource type="Texture2D" uid="uid://cgsjbxk8f5myu" path="res://Assets/Icons/unconvetional_icons/icons/acid.png" id="2_fkybt"]
 [ext_resource type="Texture2D" uid="uid://cnkdd0meu6pcs" path="res://icon.svg" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://bbg61tyk5p61x" path="res://Scripts/Player/Shooting.cs" id="3_vgqql"]
+[ext_resource type="Resource" uid="uid://qcdq8b3xuf2" path="res://Scripts/Weapons/Stapler.tres" id="5_0gysh"]
 [ext_resource type="Texture2D" uid="uid://bo4k2gwje2634" path="res://Assets/Player/fussVR.png.png" id="6_h4iuc"]
 [ext_resource type="Texture2D" uid="uid://lbohvkah0r2l" path="res://Assets/Player/fussVL.png.png" id="7_fd4e3"]
 [ext_resource type="Texture2D" uid="uid://6j6h7wb178c5" path="res://Assets/Player/beinHL1.png.png" id="8_qqcod"]
@@ -33,7 +32,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("bodyparts/right_foot:visible")
+tracks/0/path = NodePath("Legs/right_foot:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,7 +44,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("bodyparts/left_leg_1:visible")
+tracks/1/path = NodePath("Legs/left_leg_1:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -57,7 +56,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("bodyparts/left_leg_2:visible")
+tracks/2/path = NodePath("Legs/left_leg_2:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -69,7 +68,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("bodyparts/left_leg_3:visible")
+tracks/3/path = NodePath("Legs/left_leg_3:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -80,8 +79,8 @@ tracks/3/keys = {
 }
 tracks/4/type = "value"
 tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("bodyparts/body:rotation")
+tracks/4/enabled = false
+tracks/4/path = NodePath("Body/body:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -93,7 +92,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("bodyparts/left_foot:visible")
+tracks/5/path = NodePath("Legs/left_foot:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -105,7 +104,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("bodyparts/right_leg_1:visible")
+tracks/6/path = NodePath("Legs/right_leg_1:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -117,7 +116,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("bodyparts/right_leg_2:visible")
+tracks/7/path = NodePath("Legs/right_leg_2:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -129,7 +128,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("bodyparts/right_leg_3:visible")
+tracks/8/path = NodePath("Legs/right_leg_3:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -146,70 +145,80 @@ _data = {
 &"walk": ExtResource("16_qqcod")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animationPlayer")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shooting", "animationPlayer", "footSteps")]
 script = ExtResource("1_cvnsp")
+shooting = NodePath("Body/ShootPos")
 animationPlayer = NodePath("AnimationPlayer")
+footSteps = NodePath("FootSteps")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_v0iea")
 
 [node name="Legs" type="Node2D" parent="."]
-visible = false
 
-[node name="Acid" type="Sprite2D" parent="Legs"]
-texture_filter = 1
-texture = ExtResource("2_fkybt")
+[node name="right_foot" type="Sprite2D" parent="Legs"]
+rotation = 1.5707964
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("6_h4iuc")
+
+[node name="left_foot" type="Sprite2D" parent="Legs"]
+rotation = 1.5707964
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("7_fd4e3")
+
+[node name="left_leg_1" type="Sprite2D" parent="Legs"]
+rotation = 1.5707964
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("8_qqcod")
+
+[node name="left_leg_2" type="Sprite2D" parent="Legs"]
+rotation = 1.5707964
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("9_igrcy")
+
+[node name="left_leg_3" type="Sprite2D" parent="Legs"]
+rotation = 1.5707964
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("10_fs7ks")
+
+[node name="right_leg_1" type="Sprite2D" parent="Legs"]
+rotation = 1.5707964
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("11_l6n3p")
+
+[node name="right_leg_2" type="Sprite2D" parent="Legs"]
+rotation = 1.5707964
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("12_olqyp")
+
+[node name="right_leg_3" type="Sprite2D" parent="Legs"]
+rotation = 1.5707964
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("13_wpjfl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 
 [node name="Body" type="Node2D" parent="."]
 
-[node name="Blunt" type="Sprite2D" parent="Body"]
-visible = false
-texture_filter = 1
-texture = ExtResource("1_v0iea")
-
 [node name="ShootPos" type="Node2D" parent="Body"]
 position = Vector2(5, 0)
 rotation = 1.5707964
 script = ExtResource("3_vgqql")
+weaponResource = ExtResource("5_0gysh")
 
 [node name="Icon" type="Sprite2D" parent="Body/ShootPos"]
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("3_6t5aa")
 
-[node name="bodyparts" type="Node2D" parent="."]
+[node name="body" type="Sprite2D" parent="Body"]
+rotation = 1.5707964
 scale = Vector2(0.06, 0.06)
-
-[node name="right_foot" type="Sprite2D" parent="bodyparts"]
-texture = ExtResource("6_h4iuc")
-
-[node name="left_foot" type="Sprite2D" parent="bodyparts"]
-texture = ExtResource("7_fd4e3")
-
-[node name="left_leg_1" type="Sprite2D" parent="bodyparts"]
-texture = ExtResource("8_qqcod")
-
-[node name="left_leg_2" type="Sprite2D" parent="bodyparts"]
-texture = ExtResource("9_igrcy")
-
-[node name="left_leg_3" type="Sprite2D" parent="bodyparts"]
-texture = ExtResource("10_fs7ks")
-
-[node name="right_leg_1" type="Sprite2D" parent="bodyparts"]
-texture = ExtResource("11_l6n3p")
-
-[node name="right_leg_2" type="Sprite2D" parent="bodyparts"]
-texture = ExtResource("12_olqyp")
-
-[node name="right_leg_3" type="Sprite2D" parent="bodyparts"]
-texture = ExtResource("13_wpjfl")
-
-[node name="body" type="Sprite2D" parent="bodyparts"]
 texture = ExtResource("14_bi64h")
 
-[node name="head" type="Sprite2D" parent="bodyparts"]
+[node name="head" type="Sprite2D" parent="Body"]
+rotation = 1.5707964
+scale = Vector2(0.06, 0.06)
 texture = ExtResource("15_2ijsl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

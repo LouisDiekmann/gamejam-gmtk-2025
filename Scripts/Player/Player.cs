@@ -13,8 +13,8 @@ public partial class Player : CharacterBody2D {
     private Node2D legs;
 
     public override void _Ready() {
-        body = GetNode<Node2D>("bodyparts");
-        legs = GetNode<Node2D>("bodyparts");
+        body = GetNode<Node2D>("Body");
+        legs = GetNode<Node2D>("Legs");
         Global.Instance.player = this;
     }
 
