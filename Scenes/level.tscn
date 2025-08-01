@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cw17jrj22h5a"]
+[gd_scene load_steps=17 format=3 uid="uid://cw17jrj22h5a"]
 
 [ext_resource type="Script" uid="uid://b0xr82np2yfho" path="res://Scripts/Level.cs" id="1_6phgx"]
 [ext_resource type="Texture2D" uid="uid://c45mrysxfyrec" path="res://Assets/Icons/unconvetional_icons/icon-sheet.png" id="2_81xng"]
@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://brcysts0mxpfe" path="res://Scenes/enemy_type.tscn" id="5_wqkje"]
 [ext_resource type="PackedScene" uid="uid://b2g6sr53j558a" path="res://Scenes/weapon.tscn" id="7_8c0lf"]
 [ext_resource type="Texture2D" uid="uid://cwxyl3au768l4" path="res://Assets/Icons/unconvetional_icons/icons/hammer.png" id="7_qxfql"]
-[ext_resource type="Resource" uid="uid://bqjm3kn64plqs" path="res://Scripts/Weapons/AutoStapler.tres" id="8_754fn"]
 [ext_resource type="Script" uid="uid://bh8u0qcu4lqsj" path="res://Scripts/Weapons/WeaponResource.cs" id="8_bvt00"]
-[ext_resource type="Resource" uid="uid://c5d18rquycude" path="res://Scripts/Weapons/DoubleBarrel.tres" id="8_oqgf2"]
+[ext_resource type="Texture2D" uid="uid://b4xns5qpt47gp" path="res://Assets/Icons/unconvetional_icons/icons/baseball_bat.png" id="9_qxfql"]
+[ext_resource type="Texture2D" uid="uid://dawwcq5clhcy7" path="res://Assets/Icons/unconvetional_icons/icons/fork_gold.png" id="10_ha31o"]
+[ext_resource type="Texture2D" uid="uid://b1d6rdgaefh5a" path="res://Assets/Icons/unconvetional_icons/icons/disc.png" id="11_pa6b8"]
 
 [sub_resource type="Resource" id="Resource_pa6b8"]
 resource_local_to_scene = true
@@ -22,6 +23,37 @@ metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wqkje"]
 size = Vector2(79, 20)
+
+[sub_resource type="Resource" id="Resource_crh0w"]
+resource_local_to_scene = true
+script = ExtResource("8_bvt00")
+name = "baseballBat"
+melee = true
+firerate = 1.0
+texture = ExtResource("9_qxfql")
+metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
+
+[sub_resource type="Resource" id="Resource_c7le1"]
+resource_local_to_scene = true
+script = ExtResource("8_bvt00")
+name = "doubleBarrel"
+firerate = 1.0
+spread = 0.25
+pellets = 6
+ammo = 2
+texture = ExtResource("10_ha31o")
+metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
+
+[sub_resource type="Resource" id="Resource_2klc5"]
+resource_local_to_scene = true
+script = ExtResource("8_bvt00")
+name = "autoStapler"
+auto = true
+firerate = 0.10000000000582077
+spread = 0.15000000000873115
+ammo = 21
+texture = ExtResource("11_pa6b8")
+metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
 
 [node name="level_1" type="Node2D" node_paths=PackedStringArray("pauseMenu")]
 script = ExtResource("1_6phgx")
@@ -50,11 +82,12 @@ shape = SubResource("RectangleShape2D_wqkje")
 
 [node name="Stapler" parent="." instance=ExtResource("7_8c0lf")]
 position = Vector2(111, 36)
+weaponResource = SubResource("Resource_crh0w")
 
 [node name="Stapler2" parent="." instance=ExtResource("7_8c0lf")]
 position = Vector2(128, 54)
-weaponResource = ExtResource("8_oqgf2")
+weaponResource = SubResource("Resource_c7le1")
 
 [node name="Stapler3" parent="." instance=ExtResource("7_8c0lf")]
 position = Vector2(139, 35)
-weaponResource = ExtResource("8_754fn")
+weaponResource = SubResource("Resource_2klc5")

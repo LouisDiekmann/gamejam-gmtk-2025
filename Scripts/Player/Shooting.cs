@@ -58,7 +58,9 @@ public partial class Shooting : Node2D {
         Projectile projectile = projectileScene.Instantiate<Projectile>();
         projectile.Position = GlobalPosition;
         Random rng = new Random();
-        projectile.Rotation = GlobalRotation + (float)((rng.NextDouble() * 2.0) - 1.0)*weaponResource.spread;
+        float spreadRng = (float)((rng.NextDouble() * 2.0) - 1.0) * weaponResource.spread;
+        projectile.Rotation = GlobalRotation + spreadRng;
+        projectile.rng = spreadRng;
         GetTree().Root.AddChild(projectile);
         
     }
