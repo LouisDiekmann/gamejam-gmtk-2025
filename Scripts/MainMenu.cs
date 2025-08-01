@@ -23,7 +23,6 @@ public partial class MainMenu : CanvasLayer {
 	
 	[ExportGroup("Sounds")]
 	[Export] public AudioStreamPlayer fourClicksSound;
-	[Export] public AudioStreamPlayer synthErrorSound;
 	[Export] public AudioStreamPlayer hoverSound;
 
 	
