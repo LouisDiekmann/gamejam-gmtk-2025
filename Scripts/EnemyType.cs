@@ -58,6 +58,7 @@ public partial class EnemyType : RigidBody2D {
             Projectile projectile = projectileScene.Instantiate<Projectile>();
             projectile.Position = shootPos.GlobalPosition;
             projectile.Rotation = GlobalRotation + 90 * Mathf.Pi / 180;
+            projectile.speed = 24;
             GetTree().Root.AddChild(projectile);
             weaponResource.ammo -= 1;
             attackTimer = 0;
