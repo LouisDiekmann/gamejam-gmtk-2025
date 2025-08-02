@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://cw17jrj22h5a"]
+[gd_scene load_steps=18 format=3 uid="uid://cw17jrj22h5a"]
 
 [ext_resource type="Script" uid="uid://b0xr82np2yfho" path="res://Scripts/Level.cs" id="1_6phgx"]
-[ext_resource type="Texture2D" uid="uid://c45mrysxfyrec" path="res://Assets/Icons/unconvetional_icons/icon-sheet.png" id="2_81xng"]
+[ext_resource type="Texture2D" uid="uid://t145pu7ewqdr" path="res://Assets/Images/level.png" id="2_ha31o"]
 [ext_resource type="PackedScene" uid="uid://c47200743k2c2" path="res://Scenes/pause_menu.tscn" id="2_wqkje"]
+[ext_resource type="Texture2D" uid="uid://dxl7x8srgt254" path="res://Assets/Images/Screenshot 2025-08-01 162403.png" id="3_pa6b8"]
 [ext_resource type="PackedScene" uid="uid://covsx4t0xi8xk" path="res://Scenes/player.tscn" id="3_wqkje"]
 [ext_resource type="PackedScene" uid="uid://brcysts0mxpfe" path="res://Scenes/enemy_type.tscn" id="5_wqkje"]
 [ext_resource type="PackedScene" uid="uid://b2g6sr53j558a" path="res://Scenes/weapon.tscn" id="7_8c0lf"]
@@ -16,7 +17,6 @@
 resource_local_to_scene = true
 script = ExtResource("8_bvt00")
 name = "stapler"
-firerate = 0.10000000000582077
 ammo = 10
 texture = ExtResource("7_qxfql")
 metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
@@ -29,7 +29,6 @@ resource_local_to_scene = true
 script = ExtResource("8_bvt00")
 name = "baseballBat"
 melee = true
-firerate = 1.0
 texture = ExtResource("9_qxfql")
 metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
 
@@ -37,9 +36,6 @@ metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
 resource_local_to_scene = true
 script = ExtResource("8_bvt00")
 name = "doubleBarrel"
-firerate = 1.0
-spread = 0.25
-pellets = 6
 ammo = 2
 texture = ExtResource("10_ha31o")
 metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
@@ -48,9 +44,6 @@ metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
 resource_local_to_scene = true
 script = ExtResource("8_bvt00")
 name = "autoStapler"
-auto = true
-firerate = 0.10000000000582077
-spread = 0.15000000000873115
 ammo = 21
 texture = ExtResource("11_pa6b8")
 metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
@@ -59,16 +52,23 @@ metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
 script = ExtResource("1_6phgx")
 pauseMenu = NodePath("pause_menu")
 
-[node name="pause_menu" parent="." instance=ExtResource("2_wqkje")]
-visible = false
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(940, -1079)
+texture = ExtResource("2_ha31o")
 
 [node name="IconSheet" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(6, -8)
-texture = ExtResource("2_81xng")
+position = Vector2(1289, 259)
+scale = Vector2(0.7501737, 0.75017375)
+texture = ExtResource("3_pa6b8")
+
+[node name="pause_menu" parent="." instance=ExtResource("2_wqkje")]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("3_wqkje")]
-position = Vector2(48, 41)
+position = Vector2(1160.975, 127)
+scale = Vector2(2.525, 2.525)
+speed = 400
 
 [node name="EnemyType" parent="." instance=ExtResource("5_wqkje")]
 position = Vector2(95, -42)
