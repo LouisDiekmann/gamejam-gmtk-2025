@@ -26,4 +26,4 @@ texture = ExtResource("1_o2nhp")
 [node name="DetectCast" type="RayCast2D" parent="."]
 
 [node name="ShootPos" type="Node2D" parent="."]
-position = Vector2(28, 0)
+position = Vector2(51, 0)
