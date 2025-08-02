@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cyvtbf8r03ro3"]
+[gd_scene load_steps=12 format=3 uid="uid://ywc5snjf1ljr"]
 
 [ext_resource type="Theme" uid="uid://csuamfp55i22h" path="res://Assets/Resources/main_theme.tres" id="1_28flt"]
 [ext_resource type="Script" uid="uid://c44sx6h7v1j2y" path="res://Scripts/MainMenu.cs" id="1_48xlc"]
-[ext_resource type="Resource" path="res://Assets/Resources/settings_resource.tres" id="2_n45e2"]
+[ext_resource type="Resource" uid="uid://dkfwph7o8ts0r" path="res://Assets/Resources/settings_resource.tres" id="2_n45e2"]
 [ext_resource type="Script" uid="uid://dg4f3wc8umt6h" path="res://Scripts/AudioManager.cs" id="3_opfnp"]
-[ext_resource type="FontFile" uid="uid://do2mdms57ekpi" path="res://Assets/Fonts/AlumniSans-Black.ttf" id="4_ce3w2"]
 [ext_resource type="AudioStream" uid="uid://da5gqlsly7hei" path="res://Assets/Music/It is Lost.mp3" id="4_yhxw7"]
 [ext_resource type="AudioStream" uid="uid://cnr6b0ixyy4a3" path="res://Assets/SFX/760557__noisyredfox__4-clicks.ogg" id="5_yhxw7"]
 [ext_resource type="AudioStream" uid="uid://bejuuqqdr268e" path="res://Assets/SFX/synth-shot-fx-by-alien-i-trust-19-245446.mp3" id="6_yhxw7"]
@@ -138,11 +137,6 @@ offset_right = -57.0
 offset_bottom = -59.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="settings_label" type="Label" parent="settings_panel/settings_vbox"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_ce3w2")
-text = "Settings"
 
 [node name="MarginContainer" type="MarginContainer" parent="settings_panel/settings_vbox"]
 custom_minimum_size = Vector2(0, 8)
@@ -292,13 +286,13 @@ texture = ExtResource("9_trj04")
 [connection signal="button_down" from="vbox_menu_buttons/credits_button" to="." method="_on_credits_button_down"]
 [connection signal="mouse_entered" from="vbox_menu_buttons/credits_button" to="." method="_on_button_mouse_entered"]
 [connection signal="drag_ended" from="settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider" to="." method="_on_hslider_drag_ended"]
-[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider" to="." method="_on_master_hslider_value_changed"]
 [connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider" to="audio" method="_on_settings_volume_changed"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider" to="." method="_on_master_hslider_value_changed"]
 [connection signal="drag_ended" from="settings_panel/settings_vbox/audio_vbox/music_hbox/music_hslider" to="." method="_on_hslider_drag_ended"]
-[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/music_hbox/music_hslider" to="." method="_on_music_hslider_value_changed"]
 [connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/music_hbox/music_hslider" to="audio" method="_on_settings_volume_changed"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/music_hbox/music_hslider" to="." method="_on_music_hslider_value_changed"]
 [connection signal="drag_ended" from="settings_panel/settings_vbox/audio_vbox/effects_hbox/effects_hslider" to="." method="_on_hslider_drag_ended"]
-[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/effects_hbox/effects_hslider" to="." method="_on_effects_hslider_value_changed"]
 [connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/effects_hbox/effects_hslider" to="audio" method="_on_settings_volume_changed"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/effects_hbox/effects_hslider" to="." method="_on_effects_hslider_value_changed"]
 [connection signal="drag_ended" from="settings_panel/settings_vbox/controls_vbox/sensitivity_speed_hbox/sensitivity_speed_hslider" to="." method="_on_hslider_drag_ended"]
 [connection signal="value_changed" from="settings_panel/settings_vbox/controls_vbox/sensitivity_speed_hbox/sensitivity_speed_hslider" to="." method="_on_sensitivity_hslider_value_changed"]

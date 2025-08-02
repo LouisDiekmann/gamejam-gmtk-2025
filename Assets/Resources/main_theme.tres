@@ -1,4 +1,18 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://csuamfp55i22h"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://csuamfp55i22h"]
+
+[ext_resource type="FontFile" uid="uid://ctn4271x4icb2" path="res://Assets/Fonts/AlumniSans-Regular.ttf" id="1_u27pc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6phch"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxk65"]
 bg_color = Color(0.7459414, 9.62615e-08, 0.40989327, 1)
@@ -7,6 +21,18 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwxrg"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmj4s"]
 bg_color = Color(0.94509804, 0, 0.5254902, 1)
 corner_radius_top_left = 4
@@ -14,17 +40,49 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vd3xe"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_lmj4s"]
 color = Color(0.45452422, 0.4545243, 0.45452422, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u27pc"]
-bg_color = Color(0.07246391, 0.084377274, 0.113855965, 1)
+bg_color = Color(0.028574262, 0.057088934, 0.069603264, 1)
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
 Button/font_sizes/font_size = 28
+Button/fonts/font = ExtResource("1_u27pc")
+Button/styles/disabled = SubResource("StyleBoxFlat_6phch")
 Button/styles/focus = SubResource("StyleBoxFlat_fxk65")
+Button/styles/hover = SubResource("StyleBoxFlat_bwxrg")
 Button/styles/normal = SubResource("StyleBoxFlat_lmj4s")
+Button/styles/pressed = SubResource("StyleBoxFlat_vd3xe")
 HBoxContainer/constants/separation = 16
 HSlider/styles/slider = SubResource("StyleBoxLine_lmj4s")
 Label/font_sizes/font_size = 28
