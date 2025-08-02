@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ywc5snjf1ljr"]
+[gd_scene load_steps=13 format=3 uid="uid://ywc5snjf1ljr"]
 
 [ext_resource type="Theme" uid="uid://csuamfp55i22h" path="res://Assets/Resources/main_theme.tres" id="1_28flt"]
 [ext_resource type="Script" uid="uid://c44sx6h7v1j2y" path="res://Scripts/MainMenu.cs" id="1_48xlc"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://da5gqlsly7hei" path="res://Assets/Music/It is Lost.mp3" id="4_yhxw7"]
 [ext_resource type="AudioStream" uid="uid://cnr6b0ixyy4a3" path="res://Assets/SFX/760557__noisyredfox__4-clicks.ogg" id="5_yhxw7"]
 [ext_resource type="AudioStream" uid="uid://bejuuqqdr268e" path="res://Assets/SFX/synth-shot-fx-by-alien-i-trust-19-245446.mp3" id="6_yhxw7"]
+[ext_resource type="Texture2D" uid="uid://c6qnq66gnwspf" path="res://Assets/Images/bg.png" id="7_trj04"]
 [ext_resource type="Texture2D" uid="uid://o2uxcsnxafs" path="res://Assets/Images/logo.png" id="9_trj04"]
 
 [sub_resource type="Animation" id="Animation_cp0ys"]
@@ -80,13 +81,13 @@ stream = ExtResource("6_yhxw7")
 volume_db = -35.0
 bus = &"Effects"
 
-[node name="background" type="ColorRect" parent="."]
+[node name="background2" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+texture = ExtResource("7_trj04")
 
 [node name="vbox_menu_buttons" type="VBoxContainer" parent="."]
 anchors_preset = -1
@@ -243,14 +244,19 @@ text = "Music:
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/"
 
-[node name="loading_screen" type="ColorRect" parent="."]
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(965.00006, 447)
+scale = Vector2(0.51296294, 0.51296294)
+texture = ExtResource("9_trj04")
+
+[node name="loading_screen" type="TextureRect" parent="."]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.2120942, 0.004713264, 0.0046982714, 1)
+texture = ExtResource("7_trj04")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="loading_screen"]
 libraries = {
@@ -274,11 +280,6 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 64
 text = "Loading."
 
-[node name="Logo" type="Sprite2D" parent="."]
-position = Vector2(965.00006, 447)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("9_trj04")
-
 [connection signal="button_down" from="vbox_menu_buttons/play_button" to="." method="_on_play_button_down"]
 [connection signal="mouse_entered" from="vbox_menu_buttons/play_button" to="." method="_on_button_mouse_entered"]
 [connection signal="button_down" from="vbox_menu_buttons/settings_button" to="." method="_on_settings_button_down"]
@@ -286,13 +287,13 @@ texture = ExtResource("9_trj04")
 [connection signal="button_down" from="vbox_menu_buttons/credits_button" to="." method="_on_credits_button_down"]
 [connection signal="mouse_entered" from="vbox_menu_buttons/credits_button" to="." method="_on_button_mouse_entered"]
 [connection signal="drag_ended" from="settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider" to="." method="_on_hslider_drag_ended"]
-[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider" to="audio" method="_on_settings_volume_changed"]
 [connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider" to="." method="_on_master_hslider_value_changed"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/master_hbox/master_hslider" to="audio" method="_on_settings_volume_changed"]
 [connection signal="drag_ended" from="settings_panel/settings_vbox/audio_vbox/music_hbox/music_hslider" to="." method="_on_hslider_drag_ended"]
-[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/music_hbox/music_hslider" to="audio" method="_on_settings_volume_changed"]
 [connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/music_hbox/music_hslider" to="." method="_on_music_hslider_value_changed"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/music_hbox/music_hslider" to="audio" method="_on_settings_volume_changed"]
 [connection signal="drag_ended" from="settings_panel/settings_vbox/audio_vbox/effects_hbox/effects_hslider" to="." method="_on_hslider_drag_ended"]
-[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/effects_hbox/effects_hslider" to="audio" method="_on_settings_volume_changed"]
 [connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/effects_hbox/effects_hslider" to="." method="_on_effects_hslider_value_changed"]
+[connection signal="value_changed" from="settings_panel/settings_vbox/audio_vbox/effects_hbox/effects_hslider" to="audio" method="_on_settings_volume_changed"]
 [connection signal="drag_ended" from="settings_panel/settings_vbox/controls_vbox/sensitivity_speed_hbox/sensitivity_speed_hslider" to="." method="_on_hslider_drag_ended"]
 [connection signal="value_changed" from="settings_panel/settings_vbox/controls_vbox/sensitivity_speed_hbox/sensitivity_speed_hslider" to="." method="_on_sensitivity_hslider_value_changed"]

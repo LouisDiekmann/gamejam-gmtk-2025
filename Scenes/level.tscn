@@ -121,7 +121,7 @@ visible = false
 
 [node name="Player" parent="." instance=ExtResource("3_wqkje")]
 position = Vector2(1160.975, 127)
-scale = Vector2(2.525, 2.525)
+scale = Vector2(4.12, 4.12)
 speed = 400
 
 [node name="collisions" type="Node2D" parent="."]

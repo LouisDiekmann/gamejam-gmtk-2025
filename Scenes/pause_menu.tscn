@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c47200743k2c2"]
+[gd_scene load_steps=11 format=3 uid="uid://c47200743k2c2"]
 
 [ext_resource type="Script" uid="uid://b8gdubng630yb" path="res://Scripts/PauseMenu.cs" id="1_1och7"]
 [ext_resource type="Theme" uid="uid://csuamfp55i22h" path="res://Assets/Resources/main_theme.tres" id="2_bpi0q"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://do2mdms57ekpi" path="res://Assets/Fonts/AlumniSans-Black.ttf" id="3_vmyb1"]
 [ext_resource type="AudioStream" uid="uid://cnr6b0ixyy4a3" path="res://Assets/SFX/760557__noisyredfox__4-clicks.ogg" id="4_stj27"]
 [ext_resource type="AudioStream" uid="uid://bejuuqqdr268e" path="res://Assets/SFX/synth-shot-fx-by-alien-i-trust-19-245446.mp3" id="6_u8tnp"]
+[ext_resource type="Texture2D" uid="uid://o2uxcsnxafs" path="res://Assets/Images/logo.png" id="7_stj27"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_stj27"]
 
@@ -50,6 +51,26 @@ anchor_bottom = 1.0
 offset_right = 459.0
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="menu_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 178.0
+offset_bottom = 395.0
+grow_horizontal = 2
+texture = ExtResource("7_stj27")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="menu_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 406.0
+offset_bottom = 441.0
+grow_horizontal = 2
+text = "- Paused -"
+horizontal_alignment = 1
 
 [node name="settings_vbox" type="VBoxContainer" parent="menu_panel"]
 layout_mode = 1

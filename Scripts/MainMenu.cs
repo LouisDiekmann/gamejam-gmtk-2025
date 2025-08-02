@@ -13,7 +13,7 @@ public partial class MainMenu : CanvasLayer {
 	[Export] public SettingsResource settingsResource;
 	[Export] public Panel settingsPanel;
 	[Export] public Panel creditsPanel;
-	[Export] public ColorRect loadingScreen;
+	[Export] public TextureRect loadingScreen;
 	
 	[ExportGroup("Settings Sliders")]
 	[Export] public HSlider masterVolumeSlider;
