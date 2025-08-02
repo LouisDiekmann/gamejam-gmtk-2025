@@ -6,6 +6,8 @@
 [node name="Stapler" type="Node2D"]
 script = ExtResource("1_e1ly8")
 weaponResource = ExtResource("2_qv81b")
+pickupRange = 42
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+scale = Vector2(2.75, 2.75)
