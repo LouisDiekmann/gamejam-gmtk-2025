@@ -149,6 +149,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shooting", "animationPlayer", "footSteps") groups=["Player"]]
+z_index = 10
 script = ExtResource("1_cvnsp")
 shooting = NodePath("Body/ShootPos")
 animationPlayer = NodePath("AnimationPlayer")

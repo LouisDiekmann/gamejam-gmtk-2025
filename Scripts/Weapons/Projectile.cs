@@ -25,7 +25,7 @@ public partial class Projectile : Area2D {
             Sprite2D bullet = new Sprite2D();
             bullet.Texture = sprite2D.Texture;
             bullet.Rotation = Rotation;
-            bullet.Position = Position;
+            bullet.Position = sprite2D.GlobalPosition;
             bullet.Scale = sprite2D.Scale;
             GetTree().Root.AddChild(bullet);
             QueueFree();
