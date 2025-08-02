@@ -4,8 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://cwxyl3au768l4" path="res://Assets/Icons/unconvetional_icons/icons/hammer.png" id="2_bay1s"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_bay1s")
-ammo = 10
 name = "stapler"
+firerate = 0.10000000000582077
+spread = 0.10000000000582077
+ammo = 10
 texture = ExtResource("2_bay1s")
 metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"

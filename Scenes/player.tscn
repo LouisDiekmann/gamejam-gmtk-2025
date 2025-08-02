@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://covsx4t0xi8xk"]
+[gd_scene load_steps=29 format=3 uid="uid://covsx4t0xi8xk"]
 
 [ext_resource type="Script" uid="uid://stuey12tlj5j" path="res://Scripts/Player/Player.cs" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://cnkdd0meu6pcs" path="res://icon.svg" id="3_6t5aa"]
@@ -8,9 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://6j6h7wb178c5" path="res://Assets/Player/beinHL1.png.png" id="8_qqcod"]
 [ext_resource type="Texture2D" uid="uid://daveeu51rilaf" path="res://Assets/Player/beinHL2.png.png" id="9_igrcy"]
 [ext_resource type="Texture2D" uid="uid://bkljroyx0j0he" path="res://Assets/Player/beinHL3.png.png" id="10_fs7ks"]
+[ext_resource type="Resource" uid="uid://qcdq8b3xuf2" path="res://Scripts/Weapons/Stapler.tres" id="11_2ijsl"]
 [ext_resource type="Texture2D" uid="uid://bxq672hwslev0" path="res://Assets/Player/beinHR1.png.png" id="11_l6n3p"]
-[ext_resource type="Script" uid="uid://bh8u0qcu4lqsj" path="res://Scripts/Weapons/WeaponResource.cs" id="11_p1odr"]
-[ext_resource type="Texture2D" uid="uid://cwxyl3au768l4" path="res://Assets/Icons/unconvetional_icons/icons/hammer.png" id="12_0gysh"]
 [ext_resource type="Texture2D" uid="uid://eu7nis4r7jhe" path="res://Assets/Player/beinHR2.png.png" id="12_olqyp"]
 [ext_resource type="Texture2D" uid="uid://c8yj38djlhtdm" path="res://Assets/Player/beinHR3.png.png" id="13_wpjfl"]
 [ext_resource type="Texture2D" uid="uid://bvlbgmpl6fyi4" path="res://Assets/Player/Hintergrund.png" id="14_bi64h"]
@@ -28,12 +27,8 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v0iea"]
 
-[sub_resource type="Resource" id="Resource_vfarp"]
-script = ExtResource("11_p1odr")
-ammo = 10
-name = "stapler"
-texture = ExtResource("12_0gysh")
-metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1odr"]
+size = Vector2(30, 17)
 
 [sub_resource type="Animation" id="Animation_0gysh"]
 length = 0.001
@@ -212,11 +207,17 @@ texture = ExtResource("13_wpjfl")
 position = Vector2(12, 0)
 rotation = 1.5707964
 script = ExtResource("3_vgqql")
-weaponResource = SubResource("Resource_vfarp")
+weaponResource = ExtResource("11_2ijsl")
 
 [node name="Icon" type="Sprite2D" parent="Body/ShootPos"]
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("3_6t5aa")
+
+[node name="Hurtbox" type="Area2D" parent="Body/ShootPos"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/ShootPos/Hurtbox"]
+position = Vector2(1.9861545e-08, -8.5)
+shape = SubResource("RectangleShape2D_p1odr")
 
 [node name="body" type="Sprite2D" parent="Body"]
 rotation = 1.5707964
@@ -271,3 +272,6 @@ bus = &"Effects"
 stream = ExtResource("25_wohnl")
 volume_db = -20.0
 bus = &"Effects"
+
+[connection signal="body_entered" from="Body/ShootPos/Hurtbox" to="Body/ShootPos" method="hurtable"]
+[connection signal="body_exited" from="Body/ShootPos/Hurtbox" to="Body/ShootPos" method="notHurtable"]
