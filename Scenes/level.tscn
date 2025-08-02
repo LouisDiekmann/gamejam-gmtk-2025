@@ -62,7 +62,7 @@ script = ExtResource("1_6phgx")
 pauseMenu = NodePath("pause_menu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(940, -1079)
+position = Vector2(940, -1080)
 texture = ExtResource("2_ha31o")
 
 [node name="IconSheet" type="Sprite2D" parent="."]

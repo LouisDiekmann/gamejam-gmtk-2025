@@ -201,6 +201,10 @@ scale = Vector2(0.06, 0.06)
 texture = ExtResource("13_wpjfl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -1940
+limit_top = -3240
+limit_right = 3820
+limit_bottom = 1080
 
 [node name="Body" type="Node2D" parent="."]
 
