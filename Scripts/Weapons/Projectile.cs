@@ -17,8 +17,9 @@ public partial class Projectile : Area2D {
     public override void _PhysicsProcess(double delta) {
         Position += new Vector2(0, -speed).Rotated(Rotation);
         float turn = GetLocalMousePosition().Angle() + 90 * Mathf.Pi / 180;
+        GD.Print(turn);
         if (controllable) {
-            if (turn < 1.5 && turn > -1.5) {
+            if (true) {
                 Rotation += GetLocalMousePosition().Angle() + 90 * Mathf.Pi / 180 + rng;
             }
         }

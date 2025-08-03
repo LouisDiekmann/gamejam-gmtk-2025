@@ -152,6 +152,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vfarp"]
+radius = 4.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shooting", "animationPlayer", "footSteps") groups=["Player"]]
 z_index = 10
@@ -315,6 +316,23 @@ bus = &"Effects"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse"]
 shape = SubResource("CircleShape2D_vfarp")
+debug_color = Color(0.99316674, 0, 0.24828319, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="Mouse"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(1, 0, 0, 0.44705883)
 
 [connection signal="body_entered" from="Body/ShootPos/Hurtbox" to="Body/ShootPos" method="hurtable"]
 [connection signal="body_exited" from="Body/ShootPos/Hurtbox" to="Body/ShootPos" method="notHurtable"]
