@@ -1,16 +1,82 @@
-[gd_scene load_steps=5 format=3 uid="uid://brcysts0mxpfe"]
+[gd_scene load_steps=10 format=3 uid="uid://brcysts0mxpfe"]
 
 [ext_resource type="Script" uid="uid://dn5jqua64udmk" path="res://Scripts/EnemyType.cs" id="1_0rwgo"]
-[ext_resource type="Texture2D" uid="uid://o34tlagpg0ki" path="res://Assets/Icons/unconvetional_icons/icons/amanita_green.png" id="1_o2nhp"]
 [ext_resource type="Resource" uid="uid://qcdq8b3xuf2" path="res://Scripts/Weapons/Stapler.tres" id="2_c5po2"]
+[ext_resource type="Texture2D" uid="uid://k8rkdevk1aql" path="res://Assets/Images/Unbenanntes_Projekt.png_2.png" id="3_ksqip"]
+[ext_resource type="Texture2D" uid="uid://c8icqx6hd5ecs" path="res://Assets/Images/Unbenanntes_Projekt.png_3.png" id="4_gy24p"]
+[ext_resource type="Texture2D" uid="uid://chudc6gjnic5a" path="res://Assets/Images/Unbenanntes_Projekt.png.png" id="5_gy24p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_avrf8"]
 radius = 25.25
 
-[node name="EnemyType" type="RigidBody2D" groups=["Enemy"]]
+[sub_resource type="Animation" id="Animation_rr6es"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AmanitaGreen:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_ksqip"), ExtResource("4_gy24p")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AmanitaGreen:rotation")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.5707963267948966, -1.6057029118347832]
+}
+
+[sub_resource type="Animation" id="Animation_fpmcq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AmanitaGreen:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ksqip")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AmanitaGreen:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qd5q3"]
+_data = {
+&"RESET": SubResource("Animation_fpmcq"),
+&"idle": SubResource("Animation_rr6es")
+}
+
+[node name="EnemyType" type="RigidBody2D" node_paths=PackedStringArray("sprite", "deathSprite") groups=["Enemy"]]
 gravity_scale = 0.0
 script = ExtResource("1_0rwgo")
 weaponResource = ExtResource("2_c5po2")
+sprite = NodePath("AmanitaGreen")
+deathSprite = NodePath("deathSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5707964
@@ -19,11 +85,22 @@ shape = SubResource("CircleShape2D_avrf8")
 [node name="AmanitaGreen" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-1, 0)
-rotation = 1.5707964
-scale = Vector2(2.525, 2.525)
-texture = ExtResource("1_o2nhp")
+scale = Vector2(0.25714287, 0.2571429)
+texture = ExtResource("3_ksqip")
+
+[node name="deathSprite" type="Sprite2D" parent="."]
+visible = false
+rotation = -1.5707964
+scale = Vector2(0.257, 0.257)
+texture = ExtResource("5_gy24p")
 
 [node name="DetectCast" type="RayCast2D" parent="."]
 
 [node name="ShootPos" type="Node2D" parent="."]
 position = Vector2(51, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qd5q3")
+}
+autoplay = "idle"

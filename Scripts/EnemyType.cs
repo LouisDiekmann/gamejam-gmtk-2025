@@ -14,6 +14,8 @@ public partial class EnemyType : RigidBody2D {
     [Export] private float timeToGoBack = 5;
     [Export] private float speed = 0.01f;
     [Export] public WeaponResource weaponResource;
+    [Export] public Sprite2D sprite;
+    [Export] public Sprite2D deathSprite;
 
     public override void _Ready() {
         detectCast = GetNode<RayCast2D>("DetectCast");
@@ -73,6 +75,8 @@ public partial class EnemyType : RigidBody2D {
         weaponDump.weaponResource = weaponResource;
         weaponDump.Position = GlobalPosition;
         weaponDump.Rotation = GlobalRotation;
+        sprite.Visible = false;
+        deathSprite.Visible = true;
         GetTree().Root.AddChild(weaponDump);
         QueueFree();
     }
