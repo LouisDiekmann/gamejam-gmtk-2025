@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://covsx4t0xi8xk"]
+[gd_scene load_steps=33 format=3 uid="uid://covsx4t0xi8xk"]
 
 [ext_resource type="Script" uid="uid://stuey12tlj5j" path="res://Scripts/Player/Player.cs" id="1_cvnsp"]
 [ext_resource type="Script" uid="uid://bbg61tyk5p61x" path="res://Scripts/Player/Shooting.cs" id="3_vgqql"]
@@ -150,6 +150,8 @@ _data = {
 &"idle": ExtResource("17_igrcy"),
 &"walk": ExtResource("16_qqcod")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vfarp"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shooting", "animationPlayer", "footSteps") groups=["Player"]]
 z_index = 10
@@ -308,6 +310,11 @@ bus = &"Effects"
 stream = ExtResource("25_wohnl")
 volume_db = -25.0
 bus = &"Effects"
+
+[node name="Mouse" type="Area2D" parent="." groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse"]
+shape = SubResource("CircleShape2D_vfarp")
 
 [connection signal="body_entered" from="Body/ShootPos/Hurtbox" to="Body/ShootPos" method="hurtable"]
 [connection signal="body_exited" from="Body/ShootPos/Hurtbox" to="Body/ShootPos" method="notHurtable"]
