@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://dkh8rxmsr5jw6"]
 
 [ext_resource type="Script" uid="uid://bh8u0qcu4lqsj" path="res://Scripts/Weapons/WeaponResource.cs" id="1_5dxkr"]
-[ext_resource type="Texture2D" uid="uid://dk5ronhit3k10" path="res://Assets/Waffen/Bat.png" id="2_5dxkr"]
+[ext_resource type="Texture2D" uid="uid://b4xns5qpt47gp" path="res://Assets/Icons/unconvetional_icons/icons/baseball_bat.png" id="2_5dxkr"]
 
 [resource]
 resource_local_to_scene = true

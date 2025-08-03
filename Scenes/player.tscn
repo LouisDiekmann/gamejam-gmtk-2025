@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://covsx4t0xi8xk"]
+[gd_scene load_steps=34 format=3 uid="uid://covsx4t0xi8xk"]
 
 [ext_resource type="Script" uid="uid://stuey12tlj5j" path="res://Scripts/Player/Player.cs" id="1_cvnsp"]
 [ext_resource type="Script" uid="uid://bbg61tyk5p61x" path="res://Scripts/Player/Shooting.cs" id="3_vgqql"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://fcm1frj60nrx" path="res://Assets/Waffen/Pistol.png" id="14_vfarp"]
 [ext_resource type="Texture2D" uid="uid://cdjssacgc3df8" path="res://Assets/Player/kopf.png.png" id="15_2ijsl"]
 [ext_resource type="Animation" uid="uid://0c4hmhq3xokf" path="res://Assets/Resources/walk.res" id="16_qqcod"]
+[ext_resource type="AudioStream" uid="uid://ds1lbwl1ba4yh" path="res://Assets/SFX/shot.wav" id="16_y6uwr"]
 [ext_resource type="Animation" uid="uid://c26e53tugt3" path="res://Assets/Resources/idle.res" id="17_igrcy"]
 [ext_resource type="Script" uid="uid://wf00jmhssxti" path="res://Scripts/FootStepsSound.cs" id="18_p1odr"]
 [ext_resource type="AudioStream" uid="uid://b4e3fsuxg2dgh" path="res://Assets/SFX/01-concrete-footsteps-1-6265.wav" id="19_0gysh"]
@@ -257,6 +258,11 @@ position = Vector2(0, 3)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/ShootPos/Hurtbox"]
 position = Vector2(1.9861545e-08, -8.5)
 shape = SubResource("RectangleShape2D_p1odr")
+
+[node name="Shot" type="AudioStreamPlayer" parent="Body/ShootPos"]
+stream = ExtResource("16_y6uwr")
+volume_db = -40.0
+bus = &"Effects"
 
 [node name="body" type="Sprite2D" parent="Body"]
 rotation = 1.5707964

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://bqjm3kn64plqs"]
 
 [ext_resource type="Script" uid="uid://bh8u0qcu4lqsj" path="res://Scripts/Weapons/WeaponResource.cs" id="1_r2c61"]
-[ext_resource type="Texture2D" uid="uid://buj4i52gjntji" path="res://Assets/Waffen/Auto.png" id="2_o2i0f"]
+[ext_resource type="Texture2D" uid="uid://b1d6rdgaefh5a" path="res://Assets/Icons/unconvetional_icons/icons/disc.png" id="2_o2i0f"]
 
 [resource]
 resource_local_to_scene = true

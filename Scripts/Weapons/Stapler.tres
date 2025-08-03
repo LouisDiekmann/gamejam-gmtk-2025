@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://qcdq8b3xuf2"]
 
 [ext_resource type="Script" uid="uid://bh8u0qcu4lqsj" path="res://Scripts/Weapons/WeaponResource.cs" id="1_bay1s"]
-[ext_resource type="Texture2D" uid="uid://fcm1frj60nrx" path="res://Assets/Waffen/Pistol.png" id="2_bay1s"]
+[ext_resource type="Texture2D" uid="uid://cwxyl3au768l4" path="res://Assets/Icons/unconvetional_icons/icons/hammer.png" id="2_bay1s"]
 
 [resource]
 resource_local_to_scene = true

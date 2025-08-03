@@ -12,6 +12,7 @@ public partial class Shooting : Node2D {
     private Sprite2D gun;
     private Sprite2D gun2;
     private Sprite2D gun3;
+    private AudioStreamPlayer shot;
 
     public override void _Ready() {
         hurtbox = GetNode<Area2D>("Hurtbox");
@@ -19,6 +20,7 @@ public partial class Shooting : Node2D {
         gun = GetNode<Sprite2D>("Gun");
         gun2 = GetNode<Sprite2D>("Gun2");
         gun3 = GetNode<Sprite2D>("Gun3");
+        shot = GetNode<AudioStreamPlayer>("Shot");
     }
 
     public override void _PhysicsProcess(double delta) {
@@ -58,6 +60,7 @@ public partial class Shooting : Node2D {
                     makeBullet();
                 }
                 weaponResource.ammo -= 1;
+                shot.Play();
             }
             timer = 0;
         }

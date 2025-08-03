@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://csuamfp55i22h" path="res://Assets/Resources/main_theme.tres" id="1_28flt"]
 [ext_resource type="Script" uid="uid://c44sx6h7v1j2y" path="res://Scripts/MainMenu.cs" id="1_48xlc"]
-[ext_resource type="Resource" uid="uid://dkfwph7o8ts0r" path="res://Assets/Resources/settings_resource.tres" id="2_n45e2"]
+[ext_resource type="Resource" path="res://Assets/Resources/settings_resource.tres" id="2_n45e2"]
 [ext_resource type="Script" uid="uid://dg4f3wc8umt6h" path="res://Scripts/AudioManager.cs" id="3_opfnp"]
 [ext_resource type="AudioStream" uid="uid://da5gqlsly7hei" path="res://Assets/Music/It is Lost.mp3" id="4_yhxw7"]
 [ext_resource type="AudioStream" uid="uid://cnr6b0ixyy4a3" path="res://Assets/SFX/760557__noisyredfox__4-clicks.ogg" id="5_yhxw7"]
@@ -242,7 +242,10 @@ text = "Music:
 
 \"SCP-x5x (Outer Thoughts)\" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
-http://creativecommons.org/licenses/by/4.0/"
+http://creativecommons.org/licenses/by/4.0/
+
+Gun sound:
+https://pixabay.com/de/sound-effects/mp5-168858/"
 
 [node name="Logo" type="Sprite2D" parent="."]
 position = Vector2(965.00006, 447)

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://c5d18rquycude"]
 
 [ext_resource type="Script" uid="uid://bh8u0qcu4lqsj" path="res://Scripts/Weapons/WeaponResource.cs" id="1_vwhyx"]
-[ext_resource type="Texture2D" uid="uid://ctimmjus237b6" path="res://Assets/Waffen/Shotgun.png" id="2_3bfiy"]
+[ext_resource type="Texture2D" uid="uid://dawwcq5clhcy7" path="res://Assets/Icons/unconvetional_icons/icons/fork_gold.png" id="2_3bfiy"]
 
 [resource]
 resource_local_to_scene = true
