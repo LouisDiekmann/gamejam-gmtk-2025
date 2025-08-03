@@ -44,7 +44,7 @@ public partial class Player : CharacterBody2D {
     }
 
     public void death() {
-        GD.Print("you died, haha");
+        GetTree().ReloadCurrentScene();
     }
     
 }

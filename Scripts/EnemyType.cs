@@ -78,6 +78,12 @@ public partial class EnemyType : RigidBody2D {
         sprite.Visible = false;
         deathSprite.Visible = true;
         GetTree().Root.AddChild(weaponDump);
+        Sprite2D sprite2D = new Sprite2D();
+        sprite2D.Texture = deathSprite.Texture;
+        sprite2D.Position = GlobalPosition;
+        sprite2D.Rotation = GlobalRotation + 270 * Mathf.Pi / 180;
+        sprite2D.Scale = deathSprite.Scale;
+        GetTree().Root.AddChild(sprite2D);
         QueueFree();
     }
 

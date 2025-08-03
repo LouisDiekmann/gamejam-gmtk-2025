@@ -16,8 +16,6 @@ public partial class Projectile : Area2D {
 
     public override void _PhysicsProcess(double delta) {
         Position += new Vector2(0, -speed).Rotated(Rotation);
-        float turn = GetLocalMousePosition().Angle() + 90 * Mathf.Pi / 180;
-        GD.Print(turn);
         if (controllable) {
             if (true) {
                 Rotation += GetLocalMousePosition().Angle() + 90 * Mathf.Pi / 180 + rng;
@@ -33,11 +31,11 @@ public partial class Projectile : Area2D {
             QueueFree();
         }
         speed -= (float)delta;
-        pointLight2D.Energy -= 0.125f * (float)delta;
+        pointLight2D.Energy -= 0.055f * (float)delta;
     }
 
     public void hit(Node2D body) {
-        if (body.IsInGroup("Enemy") && controllable) {
+        if (body.IsInGroup("Enemy")) {
             EnemyType enemy = (EnemyType)body;
             enemy.death();
             QueueFree();

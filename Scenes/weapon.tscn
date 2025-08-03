@@ -8,4 +8,5 @@ script = ExtResource("1_e1ly8")
 weaponResource = ExtResource("2_qv81b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 4
 scale = Vector2(0.3, 0.3)
