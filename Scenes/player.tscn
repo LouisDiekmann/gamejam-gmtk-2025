@@ -1,7 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://covsx4t0xi8xk"]
+[gd_scene load_steps=32 format=3 uid="uid://covsx4t0xi8xk"]
 
 [ext_resource type="Script" uid="uid://stuey12tlj5j" path="res://Scripts/Player/Player.cs" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://cnkdd0meu6pcs" path="res://icon.svg" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://bbg61tyk5p61x" path="res://Scripts/Player/Shooting.cs" id="3_vgqql"]
 [ext_resource type="Texture2D" uid="uid://bo4k2gwje2634" path="res://Assets/Player/fussVR.png.png" id="6_h4iuc"]
 [ext_resource type="Texture2D" uid="uid://lbohvkah0r2l" path="res://Assets/Player/fussVL.png.png" id="7_fd4e3"]
@@ -10,9 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://bkljroyx0j0he" path="res://Assets/Player/beinHL3.png.png" id="10_fs7ks"]
 [ext_resource type="Resource" uid="uid://qcdq8b3xuf2" path="res://Scripts/Weapons/Stapler.tres" id="11_2ijsl"]
 [ext_resource type="Texture2D" uid="uid://bxq672hwslev0" path="res://Assets/Player/beinHR1.png.png" id="11_l6n3p"]
+[ext_resource type="Texture2D" uid="uid://dk5ronhit3k10" path="res://Assets/Waffen/Bat.png" id="12_2ijsl"]
 [ext_resource type="Texture2D" uid="uid://eu7nis4r7jhe" path="res://Assets/Player/beinHR2.png.png" id="12_olqyp"]
+[ext_resource type="Texture2D" uid="uid://buj4i52gjntji" path="res://Assets/Waffen/Auto.png" id="12_p1odr"]
+[ext_resource type="Texture2D" uid="uid://ctimmjus237b6" path="res://Assets/Waffen/Shotgun.png" id="13_0gysh"]
 [ext_resource type="Texture2D" uid="uid://c8yj38djlhtdm" path="res://Assets/Player/beinHR3.png.png" id="13_wpjfl"]
 [ext_resource type="Texture2D" uid="uid://bvlbgmpl6fyi4" path="res://Assets/Player/Hintergrund.png" id="14_bi64h"]
+[ext_resource type="Texture2D" uid="uid://fcm1frj60nrx" path="res://Assets/Waffen/Pistol.png" id="14_vfarp"]
 [ext_resource type="Texture2D" uid="uid://cdjssacgc3df8" path="res://Assets/Player/kopf.png.png" id="15_2ijsl"]
 [ext_resource type="Animation" uid="uid://0c4hmhq3xokf" path="res://Assets/Resources/walk.res" id="16_qqcod"]
 [ext_resource type="Animation" uid="uid://c26e53tugt3" path="res://Assets/Resources/idle.res" id="17_igrcy"]
@@ -209,16 +212,44 @@ limit_bottom = 1080
 [node name="Body" type="Node2D" parent="."]
 
 [node name="ShootPos" type="Node2D" parent="Body"]
-position = Vector2(12, 0)
+position = Vector2(16, 0)
 rotation = 1.5707964
 script = ExtResource("3_vgqql")
 weaponResource = ExtResource("11_2ijsl")
 
-[node name="Icon" type="Sprite2D" parent="Body/ShootPos"]
-scale = Vector2(0.01, 0.01)
-texture = ExtResource("3_6t5aa")
+[node name="Gun" type="Sprite2D" parent="Body/ShootPos"]
+visible = false
+position = Vector2(-13, 12)
+rotation = -1.410301
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("12_p1odr")
+flip_v = true
+
+[node name="Gun2" type="Sprite2D" parent="Body/ShootPos"]
+visible = false
+position = Vector2(-13, 3.9999998)
+rotation = -1.410301
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("13_0gysh")
+flip_v = true
+
+[node name="Gun3" type="Sprite2D" parent="Body/ShootPos"]
+visible = false
+position = Vector2(-14.000001, 5.000001)
+rotation = -1.410301
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("14_vfarp")
+flip_v = true
+
+[node name="Bat" type="Sprite2D" parent="Body/ShootPos"]
+visible = false
+position = Vector2(18, 4.999999)
+rotation = -0.5832278
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("12_2ijsl")
 
 [node name="Hurtbox" type="Area2D" parent="Body/ShootPos"]
+position = Vector2(0, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/ShootPos/Hurtbox"]
 position = Vector2(1.9861545e-08, -8.5)

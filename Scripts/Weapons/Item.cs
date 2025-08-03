@@ -3,7 +3,7 @@ using System;
 
 public partial class Item : Node2D {
     [Export] public WeaponResource weaponResource;
-    [Export] public int pickupRange = 16;
+    [Export] public int pickupRange = 96;
 
     private Sprite2D sprite2D;
 
