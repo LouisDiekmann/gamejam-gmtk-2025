@@ -245,37 +245,37 @@ script = ExtResource("18_p1odr")
 
 [node name="step1" type="AudioStreamPlayer" parent="FootSteps"]
 stream = ExtResource("19_0gysh")
-volume_db = -20.0
+volume_db = -25.0
 bus = &"Effects"
 
 [node name="step2" type="AudioStreamPlayer" parent="FootSteps"]
 stream = ExtResource("20_vfarp")
-volume_db = -20.0
+volume_db = -25.0
 bus = &"Effects"
 
 [node name="step3" type="AudioStreamPlayer" parent="FootSteps"]
 stream = ExtResource("21_y6uwr")
-volume_db = -20.0
+volume_db = -25.0
 bus = &"Effects"
 
 [node name="step4" type="AudioStreamPlayer" parent="FootSteps"]
 stream = ExtResource("22_83xs0")
-volume_db = -20.0
+volume_db = -25.0
 bus = &"Effects"
 
 [node name="step5" type="AudioStreamPlayer" parent="FootSteps"]
 stream = ExtResource("23_ypfnu")
-volume_db = -20.0
+volume_db = -25.0
 bus = &"Effects"
 
 [node name="step6" type="AudioStreamPlayer" parent="FootSteps"]
 stream = ExtResource("24_xuaoq")
-volume_db = -20.0
+volume_db = -25.0
 bus = &"Effects"
 
 [node name="step7" type="AudioStreamPlayer" parent="FootSteps"]
 stream = ExtResource("25_wohnl")
-volume_db = -20.0
+volume_db = -25.0
 bus = &"Effects"
 
 [connection signal="body_entered" from="Body/ShootPos/Hurtbox" to="Body/ShootPos" method="hurtable"]
