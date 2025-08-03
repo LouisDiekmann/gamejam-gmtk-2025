@@ -8,20 +8,30 @@ public partial class Shooting : Node2D {
     [Signal] public delegate void KillEventHandler();
     [Signal] public delegate void PunchEventHandler();
     private double timer = 12;
+    private Sprite2D bat;
+    private Sprite2D gun;
+    private Sprite2D gun2;
+    private Sprite2D gun3;
 
     public override void _Ready() {
         hurtbox = GetNode<Area2D>("Hurtbox");
+        bat = GetNode<Sprite2D>("Bat");
+        gun = GetNode<Sprite2D>("Gun");
+        gun2 = GetNode<Sprite2D>("Gun2");
+        gun3 = GetNode<Sprite2D>("Gun3");
     }
 
     public override void _PhysicsProcess(double delta) {
         attackStyle(delta);
         throwItem();
+        setItem();
     }
 
     private void attackStyle(double delta) {
         if (weaponResource == null) {
             if (Input.IsActionJustPressed("Attack")) {
-                EmitSignal(SignalName.Punch);
+                //EmitSignal(SignalName.Punch);
+                EmitSignal(SignalName.Kill);
             }
         } else if (weaponResource.auto) {
             if (Input.IsActionPressed("Attack")) {
@@ -75,6 +85,36 @@ public partial class Shooting : Node2D {
             weaponDump.Rotation = GlobalRotation;
             GetTree().Root.AddChild(weaponDump);
             weaponResource = null;
+        }
+    }
+
+    private void setItem() {
+        if (weaponResource == null) {
+            bat.Visible = true;
+            gun.Visible = false;
+            gun2.Visible = false;
+            gun3.Visible = false;
+        } else {
+            switch (weaponResource.name) {
+                case "autoStapler":
+                    bat.Visible = false;
+                    gun.Visible = true;
+                    gun2.Visible = false;
+                    gun3.Visible = false;
+                    break;
+                case "doubleBarrel":
+                    bat.Visible = false;
+                    gun.Visible = false;
+                    gun2.Visible = true;
+                    gun3.Visible = false;
+                    break;
+                case "stapler":
+                    bat.Visible = false;
+                    gun.Visible = false;
+                    gun2.Visible = false;
+                    gun3.Visible = true;
+                    break;
+            }
         }
     }
 

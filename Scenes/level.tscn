@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://cw17jrj22h5a"]
+[gd_scene load_steps=80 format=3 uid="uid://cw17jrj22h5a"]
 
 [ext_resource type="Script" uid="uid://b0xr82np2yfho" path="res://Scripts/Level.cs" id="1_6phgx"]
 [ext_resource type="Texture2D" uid="uid://t145pu7ewqdr" path="res://Assets/Images/level.png" id="2_ha31o"]
@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://covsx4t0xi8xk" path="res://Scenes/player.tscn" id="3_wqkje"]
 [ext_resource type="PackedScene" uid="uid://brcysts0mxpfe" path="res://Scenes/enemy_type.tscn" id="5_wqkje"]
 [ext_resource type="PackedScene" uid="uid://b2g6sr53j558a" path="res://Scenes/weapon.tscn" id="7_8c0lf"]
-[ext_resource type="Resource" uid="uid://bqjm3kn64plqs" path="res://Scripts/Weapons/AutoStapler.tres" id="7_oqgf2"]
-[ext_resource type="Resource" uid="uid://c5d18rquycude" path="res://Scripts/Weapons/DoubleBarrel.tres" id="8_qxfql"]
+[ext_resource type="Script" uid="uid://bh8u0qcu4lqsj" path="res://Scripts/Weapons/WeaponResource.cs" id="8_bvt00"]
+[ext_resource type="Texture2D" uid="uid://buj4i52gjntji" path="res://Assets/Waffen/Auto.png" id="9_pa6b8"]
+[ext_resource type="Texture2D" uid="uid://ctimmjus237b6" path="res://Assets/Waffen/Shotgun.png" id="10_crh0w"]
+[ext_resource type="Texture2D" uid="uid://fcm1frj60nrx" path="res://Assets/Waffen/Pistol.png" id="12_c7le1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ha31o"]
 size = Vector2(5760, 42)
@@ -204,6 +206,38 @@ size = Vector2(44.944115, 75.57611)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s14gf"]
 size = Vector2(105.93231, 95.58618)
+
+[sub_resource type="Resource" id="Resource_nngtn"]
+resource_local_to_scene = true
+script = ExtResource("8_bvt00")
+name = "autoStapler"
+auto = true
+firerate = 0.10000000000582077
+spread = 0.15000000000873115
+ammo = 21
+texture = ExtResource("9_pa6b8")
+metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
+
+[sub_resource type="Resource" id="Resource_vofx3"]
+resource_local_to_scene = true
+script = ExtResource("8_bvt00")
+name = "doubleBarrel"
+firerate = 1.0
+spread = 0.25
+pellets = 6
+ammo = 2
+texture = ExtResource("10_crh0w")
+metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
+
+[sub_resource type="Resource" id="Resource_00k4y"]
+resource_local_to_scene = true
+script = ExtResource("8_bvt00")
+name = "stapler"
+firerate = 0.10000000000582077
+spread = 0.10000000000582077
+ammo = 10
+texture = ExtResource("12_c7le1")
+metadata/_custom_type_script = "uid://bh8u0qcu4lqsj"
 
 [node name="level_1" type="Node2D" node_paths=PackedStringArray("pauseMenu")]
 script = ExtResource("1_6phgx")
@@ -810,18 +844,16 @@ shape = SubResource("RectangleShape2D_s14gf")
 
 [node name="Weapons" type="Node2D" parent="."]
 
-[node name="Stapler" parent="Weapons" instance=ExtResource("7_8c0lf")]
-position = Vector2(234, 58)
-
 [node name="Stapler2" parent="Weapons" instance=ExtResource("7_8c0lf")]
 position = Vector2(1527, 39)
-weaponResource = ExtResource("7_oqgf2")
+weaponResource = SubResource("Resource_nngtn")
 
 [node name="Stapler3" parent="Weapons" instance=ExtResource("7_8c0lf")]
 position = Vector2(963, 268)
-weaponResource = ExtResource("8_qxfql")
+weaponResource = SubResource("Resource_vofx3")
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemyType" parent="Enemies" instance=ExtResource("5_wqkje")]
 position = Vector2(95, -42)
+weaponResource = SubResource("Resource_00k4y")
